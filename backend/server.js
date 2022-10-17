@@ -1,17 +1,9 @@
 const express = require('express');
+const dotenv = require('dotenv').config();
+const port = process.env.PORT || 3001
 
 const app = express();
 
-app.get('/', (req, res) => {
+app.use('/',require('./routes/profile'))
 
-    res.send("Welcome")
-
-});
-
-app.get('/admin', (req, res) => {
-
-    res.send("Welcome admin")
-
-});
-
-app.listen(3001);
+app.listen(port);

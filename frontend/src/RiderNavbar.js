@@ -4,7 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import { Container, Nav, Navbar} from 'react-bootstrap';
 import logo from "./navicon.png";
-
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 function RiderNavbar() {
@@ -28,7 +28,9 @@ function RiderNavbar() {
             <Nav.Link className="ml-auto" >Completed Deliveries</Nav.Link>
             </li>
             <li className="nav-item">
+            <LinkContainer to='/'>
             <Nav.Link className="ml-auto" >Profile</Nav.Link>
+            </LinkContainer>
             </li>
            <li className="nav-item">
             <Nav.Link className="ml-auto" >Log out</Nav.Link>
