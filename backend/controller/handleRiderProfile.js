@@ -1,3 +1,6 @@
+const Rider = require('./models/RiderModel')
+
+
 const getProfile = async (req, res) =>{
     res.json({message: 'GET'})
 }
