@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
@@ -10,17 +10,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar,faWallet, faMotorcycle} from "@fortawesome/free-solid-svg-icons"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function ProfilePage() {
 
+  const location = useLocation();
+  const [locationstate, setlocationstate]= React.useState({bio:'cc', name:'', email:'', mobile:'', cnic:'',address:'', deliveries:'', rating:'', wallet:''})
+
+  React.useEffect(() => {
+
+    if (location.state)
+    {
+      let _state = location.state
+      setlocationstate(_state)
+    }
+  }, [location])
+
+
+
     const navigate = useNavigate();
-    const [bioValue,setbioValue] = React.useState('Living to the Maximum');
-    const [nameValue,setnameValue] = React.useState('Johnathan Smith');
-    const [emailValue,setemailValue] = React.useState('example@example.com');
-    const [mobileValue,setmobileValue] = React.useState('12345678999');
-    const [cnicValue] = React.useState('61101-1234567-9');
-    const [addressValue,setaddressValue] = React.useState('Bay Area, San Francisco, CA');
+    const [bioValue,setbioValue] = React.useState(locationstate.bio);
+    const [nameValue,setnameValue] = React.useState(location.name);
+    const [emailValue,setemailValue] = React.useState(location.email);
+    const [mobileValue,setmobileValue] = React.useState(location.mobile);
+    const [cnicValue] = React.useState(location.cnic);
+    const [addressValue,setaddressValue] = React.useState(location.address);
 
 
     const validateInput = async event => {
@@ -56,17 +70,36 @@ export default function ProfilePage() {
       }
       else
       {
-        toast.success('Changes Validated!', {position: toast.POSITION.TOP_RIGHT});
-        const delay = (ms) => new Promise(
-          resolve => setTimeout(resolve, ms)
-        );
-        await delay(2000);
-        navigate('/');
+
+        let updateRider = fetch('/update/61101-12345678-9',{
+
+          method: 'PUT',
+          body: JSON.stringify({bioValue , nameValue, emailValue, mobileValue, addressValue}),
+          headers: {'Content-Type': 'application/json'}
+
+        });
+
+        updateRider = updateRider.json();
+        if (updateRider)
+        {
+          toast.success('Changes Validated!', {position: toast.POSITION.TOP_RIGHT});
+
+          const delay = (ms) => new Promise(
+            resolve => setTimeout(resolve, ms)
+          );
+         delay(2000);
+          navigate('/');
+        }
 
       }
     }
 
+
+
+
+
   return (
+
     <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
     
@@ -204,5 +237,6 @@ export default function ProfilePage() {
         
       </MDBContainer>
     </section>
+
   );
 }

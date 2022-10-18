@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
@@ -13,10 +13,42 @@ import { faStar,faWallet, faMotorcycle} from "@fortawesome/free-solid-svg-icons"
 import { Link } from 'react-router-dom';
 
 export default function ProfilePage() {
+
+  
+  const[riderInfo,setRiderInfo] = React.useState([{}])
+  
+
+  //const ridercnic = '61101-12345678-9'
+
+  // useEffect(() => {
+
+  //   fetch("/61101-12345678-9").then(
+  //     response => response.json()
+  //   ).then(
+  //     data => setRiderInfo(data)
+  //   )
+
+  // }, [])
+
+  useEffect(() => {
+    (async () =>
+    {
+      await fetch("/61101-12345678-9").then(
+        response => response.json()
+      ).then(
+        data => setRiderInfo(data))
+   })();
+
+  }, []);
+
   return (
-    <section style={{ backgroundColor: '#eee' }}>
+    <div>
+
+    {(typeof riderInfo.rider === 'undefined') ? (
+      <p> Loading... </p>
+    ) : (
+      <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
-    
         <MDBRow>
           <MDBCol lg="4">
             <MDBCard className="mb-4">
@@ -28,10 +60,10 @@ export default function ProfilePage() {
                   style={{ width: '150px' }}
                   fluid />
                   <p>     </p>
-                <p className="text-muted mb-1">Full Stack Developer</p>
-                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                <p className="text-muted mb-1">{riderInfo.rider.bio}</p>
+                <p className="text-muted mb-4">{riderInfo.rider.address}</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <Link to='/updateRiderProfile'>
+                  <Link to='/updateRiderProfile' state={{bio: riderInfo.rider.bio, name: riderInfo.rider.name, email: riderInfo.rider.email, mobile: riderInfo.rider.mobilenumber, cnic: riderInfo.rider.cnic, address: riderInfo.rider.address, deliveries: riderInfo.rider.deliveries, rating: riderInfo.rider.rating, wallet:riderInfo.rider.wallet}}>
                   <MDBBtn className="updatebutton">Update</MDBBtn>
                   </Link>
                 </div>
@@ -48,7 +80,7 @@ export default function ProfilePage() {
                     <MDBCardText>Full Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
+                    <MDBCardText className="text-muted">{riderInfo.rider.name}</MDBCardText>
                   </MDBCol>
                   
                 </MDBRow>
@@ -58,7 +90,7 @@ export default function ProfilePage() {
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">example@example.com</MDBCardText>
+                    <MDBCardText className="text-muted">{riderInfo.rider.email}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -67,16 +99,16 @@ export default function ProfilePage() {
                     <MDBCardText>Phone</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
+                    <MDBCardText className="text-muted">{riderInfo.rider.mobilenumber}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Mobile</MDBCardText>
+                    <MDBCardText>CNIC</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
+                    <MDBCardText className="text-muted">{riderInfo.rider.cnic}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -85,7 +117,7 @@ export default function ProfilePage() {
                     <MDBCardText>Address</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                    <MDBCardText className="text-muted">{riderInfo.rider.address}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>
@@ -103,7 +135,7 @@ export default function ProfilePage() {
                     <FontAwesomeIcon className="deliveryicon" icon={faMotorcycle} bounce size='4x'/>
                     </div>
                         <MDBCardText className="text-end">
-                            <h3>278</h3>
+                            <h3>{riderInfo.rider.deliveries}</h3>
                             <p className="mb-0">Deliveries</p>
                         </MDBCardText>
                     </div>
@@ -119,7 +151,7 @@ export default function ProfilePage() {
                     <FontAwesomeIcon className="ratingicon" icon={faStar} beat size='4x'/>
                     </div>
                         <MDBCardText className="text-end">
-                            <h3>4.7</h3>
+                            <h3>{riderInfo.rider.rating}</h3>
                             <p className="mb-0">Rating</p>
                         </MDBCardText>
                     </div>
@@ -135,7 +167,7 @@ export default function ProfilePage() {
                     <FontAwesomeIcon className="walleticon" icon={faWallet} shake size='4x' style={{color : 'cyan'}}/>
                     </div>
                         <MDBCardText className="text-end">
-                            <h3>$550</h3>
+                            <h3>${riderInfo.rider.wallet}</h3>
                             <p className="mb-0">Credits</p>
                         </MDBCardText>
                     </div>
@@ -146,5 +178,11 @@ export default function ProfilePage() {
         
       </MDBContainer>
     </section>
+    
+    )}
+
+</div>
+
+    
   );
 }

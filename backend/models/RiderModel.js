@@ -33,15 +33,15 @@ const riderSchema = mongoose.Schema({
     },
 
     deliveries :{
-        type: 'integer',
+        type: 'number',
     },
 
     rating :{
-        type: 'integer',
+        type: 'number',
     },
 
     wallet :{
-        type: 'integer',
+        type: 'number',
     }
 },{ timestamps:true})
 
