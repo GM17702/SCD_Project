@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React  from 'react';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
@@ -12,29 +12,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-export default function ProfilePage() {
+export default function ProfilePage(props) {
 
   const location = useLocation();
-  const [locationstate, setlocationstate]= React.useState({bio:'cc', name:'', email:'', mobile:'', cnic:'',address:'', deliveries:'', rating:'', wallet:''})
-
-  React.useEffect(() => {
-
-    if (location.state)
-    {
-      let _state = location.state
-      setlocationstate(_state)
-    }
-  }, [location])
-
-
+  const data = location.state;
 
     const navigate = useNavigate();
-    const [bioValue,setbioValue] = React.useState(locationstate.bio);
-    const [nameValue,setnameValue] = React.useState(location.name);
-    const [emailValue,setemailValue] = React.useState(location.email);
-    const [mobileValue,setmobileValue] = React.useState(location.mobile);
-    const [cnicValue] = React.useState(location.cnic);
-    const [addressValue,setaddressValue] = React.useState(location.address);
+    const [bioValue,setbioValue] = React.useState(data.bio);
+    const [nameValue,setnameValue] = React.useState(data.name);
+    const [emailValue,setemailValue] = React.useState(data.email);
+    const [mobileValue,setmobileValue] = React.useState(data.mobile);
+    const [cnicValue] = React.useState(data.cnic);
+    const [addressValue,setaddressValue] = React.useState(data.address);
 
 
     const validateInput = async event => {
@@ -70,26 +59,27 @@ export default function ProfilePage() {
       }
       else
       {
+        let bio = bioValue;
+        let name = nameValue;
+        let email = emailValue;
+        let mobilenumber = mobileValue;
+        let address = addressValue;
 
         let updateRider = fetch('/update/61101-12345678-9',{
 
-          method: 'PUT',
-          body: JSON.stringify({bioValue , nameValue, emailValue, mobileValue, addressValue}),
-          headers: {'Content-Type': 'application/json'}
+          method: 'put',
+          body: JSON.stringify({bio , name, email, mobilenumber, address}),
+          headers: {'Content-Type': 'Application/json'}
 
         });
 
-        updateRider = updateRider.json();
-        if (updateRider)
-        {
           toast.success('Changes Validated!', {position: toast.POSITION.TOP_RIGHT});
 
           const delay = (ms) => new Promise(
             resolve => setTimeout(resolve, ms)
           );
-         delay(2000);
-          navigate('/');
-        }
+         delay(150000);
+        navigate('/');
 
       }
     }
@@ -118,7 +108,7 @@ export default function ProfilePage() {
                 {/* <p className="text-muted mb-1">Full Stack Developer</p> */}
                 <p className="text-muted mb-4">{addressValue}</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn className="updatebutton" onClick={validateInput}>Confirm</MDBBtn>
+                  <MDBBtn className="updatebutton" onClick={validateInput }>Confirm</MDBBtn>
                   <ToastContainer/>
                 </div>
               </MDBCardBody>
@@ -194,7 +184,7 @@ export default function ProfilePage() {
                     <FontAwesomeIcon className="deliveryicon" icon={faMotorcycle} bounce size='4x'/>
                     </div>
                         <MDBCardText className="text-end">
-                            <h3>278</h3>
+                            <h3>{data.deliveries}</h3>
                             <p className="mb-0">Deliveries</p>
                         </MDBCardText>
                     </div>
@@ -210,7 +200,7 @@ export default function ProfilePage() {
                     <FontAwesomeIcon className="ratingicon" icon={faStar} beat size='4x'/>
                     </div>
                         <MDBCardText className="text-end">
-                            <h3>4.7</h3>
+                            <h3>{data.rating}</h3>
                             <p className="mb-0">Rating</p>
                         </MDBCardText>
                     </div>
@@ -226,7 +216,7 @@ export default function ProfilePage() {
                     <FontAwesomeIcon className="walleticon" icon={faWallet} shake size='4x' style={{color : 'cyan'}}/>
                     </div>
                         <MDBCardText className="text-end">
-                            <h3>$550</h3>
+                            <h3>${data.wallet}</h3>
                             <p className="mb-0">Credits</p>
                         </MDBCardText>
                     </div>

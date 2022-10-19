@@ -39,9 +39,15 @@ const makeProfile = async (req, res) =>{
 
 const updateProfile = async (req, res) =>{
 
-    const rider = await Rider.UpdateOne(
+    const rider = await Rider.updateOne(
         {cnic:req.params.cnic},
-        {$set:req.body})
+        {$set:{
+            name: req.body.name,
+            bio: req.body.bio,
+            address: req.body.address,
+            email: req.body.email,
+            mobilenumber: req.body.mobilenumber
+        }})
 
     res.send({rider})
     console.log('Updated profile');

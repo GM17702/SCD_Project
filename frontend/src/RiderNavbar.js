@@ -12,7 +12,7 @@ function RiderNavbar() {
     <Navbar className="navbar navbar-default navbar-fixed-top">
     <Container className="container">
       <div className="navbar-header">
-        <Navbar.Brand className="navbar-brand" ><img className="navlogo" src={logo} alt="logo"></img><b>Bharosa<span>RakhJani</span></b></Navbar.Brand>
+        <Navbar.Brand className="navbar-brand" ><img className="navlogo" src={logo} alt="logo"></img><b>Food<span>Panda</span></b></Navbar.Brand>
       </div>
       <Navbar.Collapse className="collapse navbar-collapse" >
         <Nav className="ms-auto">

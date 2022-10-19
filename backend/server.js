@@ -9,6 +9,9 @@ connectDB();
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true}))
+
 // var creatRider = new rider({
 //         cnic: '61101-12345678-9',
 //         name: 'Ghulam Muhammad',
