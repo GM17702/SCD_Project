@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import 'remixicon/fonts/remixicon.css'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About';
@@ -19,7 +16,6 @@ root.render(
       <Route path="/" element={<Home />} />
       <Route path="/About" element={<About />} />
       </Routes>
-   
       </React.StrictMode>
    </Router>
    
