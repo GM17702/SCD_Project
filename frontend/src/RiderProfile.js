@@ -33,7 +33,7 @@ export default function ProfilePage() {
   useEffect(() => {
     (async () =>
     {
-      await fetch("/61101-12345678-9").then(
+      await fetch("/profile/61101-12345678-9").then(
         response => response.json()
       ).then(
         data => setRiderInfo(data))

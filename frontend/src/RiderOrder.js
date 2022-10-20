@@ -1,18 +1,84 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import {
   MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBRow, MDBTypography, MDBBtn, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader,
 } from "mdb-react-ui-kit";
 import './RiderOrder.css'
 
-export default function OrderDetails6() {
+export default function OrderDetails() {
 
   const [basicModal, setBasicModal] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(false);
+  const[orderInfo,setOrderInfo] = React.useState([{}])
+  const[orderitemInfo,setOrderitemInfo] = React.useState([{}])
 
-  const toggleShow = () => setBasicModal(!basicModal);
+  const toggleShow = (totalamount) =>{
+    setBasicModal(!basicModal);
+    setTotalPrice(totalamount)
+  }
+  
+  const toggleShowOnly = () =>{
+    setBasicModal(!basicModal);
+
+  }
+
+  useEffect(() => {
+  (async () =>
+    {
+      await fetch("/orders").then(
+        response => response.json()
+      ).then(
+        orderdata => setOrderInfo(orderdata))
+   })();
+
+  }, []);
+
+  const handlingorderitems = useCallback((orderingid) => {
+  
+    console.log(orderingid+" is id");
+    if (typeof orderingid!=='undefined')
+    {
+      
+      (async () =>
+        {
+          await fetch(`/orderitems/${orderingid}`).then(
+            response => response.json()
+          ).then(
+            itemdata => setOrderitemInfo(itemdata))
+      })();
+      orderingid= undefined;
+    }
+  
+    }, []);
+  
+
+
+  
+
+// const getitems = useCallback(() => {
+  
+//   console.log("Called getitems");
+//   if (orderingid!=null) 
+//   {
+    
+//     (async () =>
+//       {
+//         await fetch(`/orderitems/${orderingid}`).then(
+//           response => response.json()
+//         ).then(
+//           itemdata => setOrderitemInfo(itemdata))
+//     })();
+//   }
+
+//   }, [orderingid]);
 
   return (
-    <>
-      <section className="vh-100">
+
+    <div>
+      {(typeof orderInfo.order === 'undefined') ? (
+      <p> Loading... </p>
+      ) : (
+      orderInfo.order.map((neworder , i) => (
+        <section key={i} className="vh-80">
         <MDBContainer className="py-5 h-100">
           <MDBRow className="justify-content-center align-items-center h-100">
             <MDBCol size="12">
@@ -26,24 +92,24 @@ export default function OrderDetails6() {
                       <MDBTypography tag="h5" className="mb-3">
                         ORDER:{" "}
                         <span className="text-primary font-weight-bold">
-                          #Y34XDHR
+                          #{neworder.orderid}
                         </span>
                       </MDBTypography>
                       <MDBTypography tag="h5" className="mb-1">
                         Pickup Restaurant: {" "}
                         <span className="text-primary font-weight-bold">
-                          McDonalds
+                          {neworder.orderpickup}
                         </span>
                       </MDBTypography>
                       <MDBTypography tag="h5" className="mb-1">
                         Delivery Location: {" "}
                         <span className="text-primary font-weight-bold">
-                          Sector A, Bahria Enclave
+                          {neworder.orderdestination}
                         </span>
                       </MDBTypography>
                     </div>
                     <div className="text-start">
-                      <MDBBtn outline className="detailbutton" onClick={toggleShow}><b>View Details</b></MDBBtn>
+                      <MDBBtn outline className="detailbutton" onClick={()=>{handlingorderitems(neworder.orderid);toggleShow(neworder.orderprice)}}><b>View Details</b></MDBBtn>
                       <MDBBtn className="updatebutton">Accept Delivery</MDBBtn>
                       
                     </div>
@@ -93,7 +159,16 @@ export default function OrderDetails6() {
             </MDBCol>
           </MDBRow>
         </MDBContainer>
+        
+        
+      </section>
+      ))
+      
+      )}
 
+      {(typeof orderitemInfo.orderitem === 'undefined') ? (
+        <p></p>
+        ) : ( 
         <MDBModal staticBackdrop show={basicModal} setShow={setBasicModal} tabIndex="-1">
                 <MDBModalDialog>
                   <MDBModalContent>
@@ -101,14 +176,14 @@ export default function OrderDetails6() {
                       <MDBBtn
                         className="btn-close"
                         color="none"
-                        onClick={toggleShow}
+                        onClick={toggleShowOnly}
                       ></MDBBtn>
                     </MDBModalHeader>
                     <MDBModalBody className="text-start text-black p-4">
                     <MDBTypography tag="h5" className="mb-3">
                         ORDER:{" "}
                         <span className="text-primary font-weight-bold">
-                          #Y34XDHR
+                          #{orderitemInfo.orderitem[0].orderid}
                         </span>
                       </MDBTypography>
                       <p className="mb-0" style={{ color: "#35558a" }}>
@@ -123,17 +198,17 @@ export default function OrderDetails6() {
                           borderTop: "2px dashed #9e9e9e",
                         }}
                       />
-
-                      <div className="d-flex justify-content-between">
-                        <p className="fw-bold mb-0">Ether Chair   (Quantity: 1)</p>
-                        <p className="text-muted mb-0">$1750.00</p>
+                      {orderitemInfo.orderitem.map((newitem , j) => (
+                      <div key={j} className="d-flex justify-content-between">
+                        <p className="fw-bold mb-0">{newitem.itemname}   (Quantity: {newitem.itemquantity})</p>
+                        <p className="text-muted mb-0">${newitem.itemprice}</p>
                       </div>
+                      ))}
 
-
-                      <div className="d-flex justify-content-between">
+                      <div className="d-flex justify-content-between mt-3">
                         <p className="fw-bold">Total</p>
                         <p className="fw-bold" style={{ color: "#35558a" }}>
-                          $2125.00
+                          ${totalPrice}
                         </p>
                       </div>
                     </MDBModalBody>
@@ -143,8 +218,10 @@ export default function OrderDetails6() {
                     </MDBModalFooter>
                   </MDBModalContent>
                 </MDBModalDialog>
-              </MDBModal>
-      </section>
-    </>
+        </MDBModal>
+        )}
+        
+
+    </div>
   );
 }

@@ -38,46 +38,71 @@ app.use(express.urlencoded({ extended: true}))
     
 //   });
 
+// var createorder = new order({
+//         orderid: 'ORD1001',
+//         customerid:'5321',
+//         restaurantid:'321',
+//         orderpickup: 'KFC',
+//         orderdestination: 'H#38, Sector B, Bahria Enclave',
+//         orderprice: 1500,
+//         customerConfirmed: true,
+//         restaurantConfirmed: true,
+//         riderConfirmed: false,
+// });
+
+// createorder.save(function (err, order) {
+//     if (err)
+//     {
+//         return console.error(err);
+//     } 
+//     else{
+//         console.log(order.orderid + " saved to Order collection.");
+
+//     }
+    
+//   });
+
 var createorderitem1 = new orderitem({
-        orderid: 'ORD1000',
-        itemid:'22',
-        itemname:'Biryani',
-        itemquantity: 3,
-        itemprice: 200,
+    orderid: 'ORD1001',
+    itemid:'12',
+    itemname:'Zinger Burger',
+    itemquantity: 3,
+    itemprice: 200,
 });
 
 var createorderitem2 = new orderitem({
-    orderid: 'ORD1000',
-    itemid:'23',
-    itemname:'Pulao',
-    itemquantity: 5,
-    itemprice: 155,
+orderid: 'ORD1001',
+itemid:'13',
+itemname:'Pizza',
+itemquantity: 2,
+itemprice: 450,
 });
 
 createorderitem1.save(function (err, orderitem) {
-    if (err)
-    {
-        return console.error(err);
-    } 
-    else{
-        console.log(order.orderid + " saved to Order collection.");
+if (err)
+{
+    return console.error(err);
+} 
+else{
+    console.log(order.orderid + " saved to OrderItem collection.");
 
-    }
-    
-  });
+}
 
-  createorderitem2.save(function (err, orderitem) {
-    if (err)
-    {
-        return console.error(err);
-    } 
-    else{
-        console.log(order.orderid + " saved to Order collection.");
+});
 
-    }
-    
-  });
+createorderitem2.save(function (err, orderitem) {
+if (err)
+{
+    return console.error(err);
+} 
+else{
+    console.log(order.orderid + " saved to OrderItem collection.");
 
-app.use('/',require('./routes/profile'))
+}
+
+});
+
+app.use('/',require('./routes/routing'))
+
 
 app.listen(port);

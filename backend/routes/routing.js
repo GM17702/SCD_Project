@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const {getAllOrders} = require('../controller/handleRiderOrders')
+const {getOrderItems} = require('../controller/handleRiderOrderItems')
 const {getProfile , updateProfile, makeProfile} = require('../controller/handleRiderProfile')
 
-router.get('/:cnic', getProfile)
+router.get('/orders', getAllOrders)
+router.get('/orderitems/:orderid', getOrderItems)
+router.get('/profile/:cnic', getProfile)
 router.put('/update/:cnic', updateProfile )
 //router.post('/update/:cnic', makeProfile)
 //router.put('/update/:cnic', updateProfile )
