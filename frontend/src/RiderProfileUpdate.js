@@ -65,7 +65,7 @@ export default function ProfilePage(props) {
         let mobilenumber = mobileValue;
         let address = addressValue;
 
-        let updateRider = fetch('/update/61101-12345678-9',{
+        let updateRider = fetch(`/update/${cnicValue}`,{
 
           method: 'put',
           body: JSON.stringify({bio , name, email, mobilenumber, address}),

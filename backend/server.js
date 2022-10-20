@@ -3,6 +3,8 @@ const colors = require('colors');
 const connectDB = require('./db/db')
 const dotenv = require('dotenv').config();
 const rider = require('./models/RiderModel');
+const order = require('./models/OrderModel');
+const orderitem = require('./models/OrderItemModel');
 const port = process.env.PORT || 3001
 
 connectDB();
@@ -35,6 +37,46 @@ app.use(express.urlencoded({ extended: true}))
 //     }
     
 //   });
+
+var createorderitem1 = new orderitem({
+        orderid: 'ORD1000',
+        itemid:'22',
+        itemname:'Biryani',
+        itemquantity: 3,
+        itemprice: 200,
+});
+
+var createorderitem2 = new orderitem({
+    orderid: 'ORD1000',
+    itemid:'23',
+    itemname:'Pulao',
+    itemquantity: 5,
+    itemprice: 155,
+});
+
+createorderitem1.save(function (err, orderitem) {
+    if (err)
+    {
+        return console.error(err);
+    } 
+    else{
+        console.log(order.orderid + " saved to Order collection.");
+
+    }
+    
+  });
+
+  createorderitem2.save(function (err, orderitem) {
+    if (err)
+    {
+        return console.error(err);
+    } 
+    else{
+        console.log(order.orderid + " saved to Order collection.");
+
+    }
+    
+  });
 
 app.use('/',require('./routes/profile'))
 

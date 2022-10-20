@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import RiderNavbar from './RiderNavbar';
 import RiderProfile from './RiderProfile';
+import RiderOrder from './RiderOrder';
 import RiderProfileUpdate from './RiderProfileUpdate';
 import Footer from './Footer';
 // import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -18,8 +19,9 @@ root.render(
     {/* <React.StrictMode> */}
       <RiderNavbar />
         <Routes>
-          <Route path='/updateRiderProfile/:cnic' element={<div><RiderProfileUpdate /></div>} />
+          <Route path='/updateRiderProfile' element={<div><RiderProfileUpdate /></div>} />
           <Route path='/' element={<div><RiderProfile /></div>} />
+          <Route path='/RiderOrders' element={<div><RiderOrder /></div>} />
         </Routes> 
       <Footer />
       <ToastContainer/>

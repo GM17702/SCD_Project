@@ -22,7 +22,9 @@ function RiderNavbar() {
              <Nav.Link  className="ml-auto" >Home</Nav.Link>
            </li>
            <li className="nav-item" >
-             <Nav.Link className="ml-auto" >Deliveries</Nav.Link>
+           <LinkContainer to='/RiderOrders'>
+             <Nav.Link className="ml-auto" >Orders</Nav.Link>
+            </LinkContainer>
            </li>
            <li className="navfbr">
             <Nav.Link className="ml-auto" >Completed Deliveries</Nav.Link>

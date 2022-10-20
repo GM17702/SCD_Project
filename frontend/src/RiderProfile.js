@@ -63,7 +63,7 @@ export default function ProfilePage() {
                 <p className="text-muted mb-1">{riderInfo.rider.bio}</p>
                 <p className="text-muted mb-4">{riderInfo.rider.address}</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <Link to={`/updateRiderProfile/${riderInfo.rider.cnic}`} state={{bio: riderInfo.rider.bio, name: riderInfo.rider.name, email: riderInfo.rider.email, mobile: riderInfo.rider.mobilenumber, cnic: riderInfo.rider.cnic, address: riderInfo.rider.address, deliveries: riderInfo.rider.deliveries, rating: riderInfo.rider.rating, wallet:riderInfo.rider.wallet}}>
+                  <Link to={'/updateRiderProfile'} state={{bio: riderInfo.rider.bio, name: riderInfo.rider.name, email: riderInfo.rider.email, mobile: riderInfo.rider.mobilenumber, cnic: riderInfo.rider.cnic, address: riderInfo.rider.address, deliveries: riderInfo.rider.deliveries, rating: riderInfo.rider.rating, wallet:riderInfo.rider.wallet}}>
                   <MDBBtn className="updatebutton">Update</MDBBtn>
                   </Link>
                 </div>
