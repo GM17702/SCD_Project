@@ -14,7 +14,7 @@ export default function Food({props}) {
 
   return (
     <div style={{margin:"100px"}} className="shadow-lg p-3 mb-5 bg-white rounded">
-      <div>
+      <div onClick={handleShow}>
         <h1>{props.name}</h1>
         <img src= {props.image} className="img-fluid" style={{height:'200px', width:'200px'}}/> 
         </div>
@@ -57,19 +57,20 @@ export default function Food({props}) {
 
 
 
-    <Modal.Dialog show={show}>
-      <Modal.Header closeButton>
-        <Modal.Title>Modal title</Modal.Title>
+    <Modal show={show}>
+      <Modal.Header closeButton onClick={handleClose }>
+        <Modal.Title>{props.name}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        <p>Modal body text goes here.</p>
+      <img src= {props.image} className="img-fluid" style={{height:'400px'}}/> 
+      <p>{props.description}</p>
       </Modal.Body>
 
       <Modal.Footer>
-        <button className='btn'>Close</button>
+        <button className='btn' onClick={handleClose }>Close</button>
       </Modal.Footer>
-    </Modal.Dialog>
+    </Modal>
     </div>
   )
 }
