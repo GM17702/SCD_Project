@@ -8,8 +8,8 @@ router.get('/orders', getAllOrders)
 router.get('/orderitems/:orderid', getOrderItems)
 router.get('/profile/:cnic', getProfile)
 router.put('/update/:cnic', updateProfile )
-//router.post('/update/:cnic', makeProfile)
-//router.put('/update/:cnic', updateProfile )
+router.post('/newRiderSignup', makeProfile)
+
 
 
  module.exports = router;

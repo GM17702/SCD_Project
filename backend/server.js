@@ -15,10 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
 
 // var creatRider = new rider({
-//         cnic: '61101-12345678-9',
+//         cnic: '61101-1234579-9',
 //         name: 'Ghulam Muhammad',
 //         mobilenumber: '03328553987',
-//         email: 'gm17702@gmail.com',
+//         email: 'gm17703@gmail.com',
 //         address: ' Bahria Enclave, Islamabad',
 //         bio : 'Living to the Fullest',
 //         deliveries: 25,
@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true}))
 // creatRider.save(function (err, rider) {
 //     if (err)
 //     {
-//         return console.error(err);
+//         console.log(err);
 //     } 
 //     else{
 //         console.log(rider.name + " saved to Rider collection.");
@@ -62,45 +62,45 @@ app.use(express.urlencoded({ extended: true}))
     
 //   });
 
-var createorderitem1 = new orderitem({
-    orderid: 'ORD1001',
-    itemid:'12',
-    itemname:'Zinger Burger',
-    itemquantity: 3,
-    itemprice: 200,
-});
+// var createorderitem1 = new orderitem({
+//     orderid: 'ORD1001',
+//     itemid:'12',
+//     itemname:'Zinger Burger',
+//     itemquantity: 3,
+//     itemprice: 200,
+// });
 
-var createorderitem2 = new orderitem({
-orderid: 'ORD1001',
-itemid:'13',
-itemname:'Pizza',
-itemquantity: 2,
-itemprice: 450,
-});
+// var createorderitem2 = new orderitem({
+// orderid: 'ORD1001',
+// itemid:'13',
+// itemname:'Pizza',
+// itemquantity: 2,
+// itemprice: 450,
+// });
 
-createorderitem1.save(function (err, orderitem) {
-if (err)
-{
-    return console.error(err);
-} 
-else{
-    console.log(order.orderid + " saved to OrderItem collection.");
+// createorderitem1.save(function (err, orderitem) {
+// if (err)
+// {
+//     return console.error(err);
+// } 
+// else{
+//     console.log(order.orderid + " saved to OrderItem collection.");
 
-}
+// }
 
-});
+// });
 
-createorderitem2.save(function (err, orderitem) {
-if (err)
-{
-    return console.error(err);
-} 
-else{
-    console.log(order.orderid + " saved to OrderItem collection.");
+// createorderitem2.save(function (err, orderitem) {
+// if (err)
+// {
+//     return console.error(err);
+// } 
+// else{
+//     console.log(order.orderid + " saved to OrderItem collection.");
 
-}
+// }
 
-});
+// });
 
 app.use('/',require('./routes/routing'))
 

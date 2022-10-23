@@ -18,23 +18,41 @@ const getProfile = async (req, res) =>{
 
 const makeProfile = async (req, res) =>{
 
-    // const newrider = await Rider.create({
 
-    //     cnic: '61101-12345678-9',
-    //     name: 'Ghulam Muhammad',
-    //     mobilenumber: '03328553987',
-    //     email: 'gm17702@gmail.com',
-    //     address: ' Bahria Enclave, Islamabad',
-    //     bio : 'Living to the Fullest',
-    //     deliveries: 25,
-    //     rating: 4.2,
-    //     wallet: 450
-    // })
-    const rider = await Rider.UpdateOne(
-        {cnic:req.params.cnic},
-        {$set:req.body})
+    try
+    {
+        let newdelivery = 0;
+        let newrating = 0.0;
+        let newwallet = 0;
 
-    res.json({newrider})
+        const newrider = await Rider.create({
+            name: req.body.name,
+            bio: req.body.bio,
+            address: req.body.address,
+            email: req.body.email,
+            mobilenumber: req.body.mobilenumber,
+            password: req.body.password,
+            cnic: req.body.cnic,
+            deliveries: newdelivery,
+            rating: newrating,
+            wallet: newwallet
+    })
+    res.status(201).send("Success");
+    console.log(newrider.name + " saved to Rider collection.");
+
+    }
+    catch(err)
+    {
+        if (err.code === 11000)
+        {
+            res.status(300).send("Duplicated error");
+        }
+       else 
+        {
+            console.log("Failed fo create rider "+err.code);
+        }
+    }
+
 }
 
 const updateProfile = async (req, res) =>{

@@ -25,13 +25,12 @@ export default function ProfilePage(props) {
     const [cnicValue] = React.useState(data.cnic);
     const [addressValue,setaddressValue] = React.useState(data.address);
 
-
     const validateInput = async event => {
 
-      const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+      const specialChars = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
       const emailcheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
       const phonecheck = /^\d{11}$/;
-      const addresscheck = /[`!@$%^&*()_+\-=\[\]{};':"\\|.<>\/?~]/;
+      const addresscheck = /[`!@$%^&*()_+\-=[\]{};':"\\|.<>/?~]/;
       if (specialChars.test(bioValue))
       {
         toast.error('Special characters not allowed in Bio field', {position: toast.POSITION.TOP_RIGHT});
@@ -65,7 +64,8 @@ export default function ProfilePage(props) {
         let mobilenumber = mobileValue;
         let address = addressValue;
 
-        let updateRider = fetch(`/update/${cnicValue}`,{
+
+         var updateRider = fetch(`/update/${cnicValue}`,{
 
           method: 'put',
           body: JSON.stringify({bio , name, email, mobilenumber, address}),
@@ -105,7 +105,6 @@ export default function ProfilePage(props) {
                   fluid />
                   <p>     </p>
                   <MDBInput className="bio-field" label='Bio' id="typebio" value={bioValue} onChange={(e) => setbioValue(e.target.value)} />
-                {/* <p className="text-muted mb-1">Full Stack Developer</p> */}
                 <p className="text-muted mb-4">{addressValue}</p>
                 <div className="d-flex justify-content-center mb-2">
                   <MDBBtn className="updatebutton" onClick={validateInput }>Confirm</MDBBtn>

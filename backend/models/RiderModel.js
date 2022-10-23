@@ -8,6 +8,11 @@ const riderSchema = mongoose.Schema({
         unique: true
     },
 
+    password :{
+        type: 'string',
+        required: true
+    },
+
     name :{
         type: 'string',
         required: true
@@ -20,7 +25,8 @@ const riderSchema = mongoose.Schema({
 
     email :{
         type: 'string',
-        required: true
+        required: true,
+        unique: true
     },
 
     address :{

@@ -6,11 +6,11 @@ import { faFacebook, faGoogle, faGithub, faLinkedin } from '@fortawesome/free-br
 
 export default function Footer(){
 return (
-    <footer id="footer" class="footer" style={{position : "absolute", width : "100%"}} >
-    <div class="container text-center">
+    <footer id="footer" className="footer" style={{position : "absolute", width : "100%"}} >
+    <div className="container text-center">
 
       
-      <ul class="social-links" >
+      <ul className="social-links" >
         <li><FontAwesomeIcon className="logos" icon={faFacebook} size="4x" /></li>
         <li><FontAwesomeIcon className="logos"  icon={faGoogle}  size="4x" /></li>
         <li><FontAwesomeIcon className="logos"  icon={faGithub}  size="4x" /></li>
