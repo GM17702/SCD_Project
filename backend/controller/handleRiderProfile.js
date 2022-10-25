@@ -3,7 +3,7 @@ const Rider = require('../models/RiderModel')
 
 const getProfile = async (req, res) =>{
 
-    const rider = await Rider.findOne({cnic:req.params.cnic})
+    const rider = await Rider.findOne({email:req.params.email})
 
     if (rider == null ){
         console.log("Rider not found")
@@ -11,6 +11,32 @@ const getProfile = async (req, res) =>{
     else{
         console.log("Rider found")
         res.json({rider})
+    }
+
+    
+}
+
+const RiderLoginAuthentication = async (req, res) =>{
+
+    const rider = await Rider.findOne({email:req.body.email})
+
+    if (rider == null ){
+        console.log("Rider doesnt exists")
+        res.status(300).send("Invalid email")
+         
+    }
+    else
+    {
+        if (rider.password === req.body.password)
+        {
+            console.log("Rider Authenticated")
+            res.status(200).send("Login Success")
+        }
+        else
+        {
+            res.status(300).send("Invalid password")
+        }
+        
     }
 
     
@@ -71,4 +97,4 @@ const updateProfile = async (req, res) =>{
     console.log('Updated profile');
 }
 
-module.exports = {getProfile,updateProfile,makeProfile} 
+module.exports = {getProfile, updateProfile, makeProfile, RiderLoginAuthentication} 

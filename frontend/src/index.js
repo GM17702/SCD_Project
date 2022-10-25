@@ -7,6 +7,7 @@ import RiderProfile from './RiderProfile';
 import RiderOrder from './RiderOrder';
 import RiderProfileUpdate from './RiderProfileUpdate';
 import RiderSignup from './RiderSignup';
+import RiderLogin from './RiderLogin';
 import Footer from './Footer';
 // import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -20,10 +21,11 @@ root.render(
     {/* <React.StrictMode> */}
       <RiderNavbar />
         <Routes>
-          <Route path='/riderSignup' element={<div><RiderSignup /></div>} />
-          <Route path='/updateRiderProfile' element={<div><RiderProfileUpdate /></div>} />
-          <Route path='/' element={<div><RiderProfile /></div>} />
-          <Route path='/RiderOrders' element={<div><RiderOrder /></div>} />
+          <Route path='/rider/RiderLogin' element={<div><RiderLogin /></div>} />
+          <Route path='/rider/riderSignup' element={<div><RiderSignup /></div>} />
+          <Route path='/rider/updateRiderProfile' element={<div><RiderProfileUpdate /></div>} />
+          <Route path='/rider/RiderProfile' element={<div><RiderProfile /></div>} />
+          <Route path='/rider/RiderOrders' element={<div><RiderOrder /></div>} />
         </Routes> 
       <Footer />
       <ToastContainer/>

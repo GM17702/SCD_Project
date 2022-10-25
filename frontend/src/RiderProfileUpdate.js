@@ -65,7 +65,7 @@ export default function ProfilePage(props) {
         let address = addressValue;
 
 
-         var updateRider = fetch(`/update/${cnicValue}`,{
+         await fetch(`/update/${cnicValue}`,{
 
           method: 'put',
           body: JSON.stringify({bio , name, email, mobilenumber, address}),
@@ -79,7 +79,7 @@ export default function ProfilePage(props) {
             resolve => setTimeout(resolve, ms)
           );
          delay(150000);
-        navigate('/');
+        navigate('/rider/RiderProfile',{state:{email : email}});
 
       }
     }
@@ -134,7 +134,7 @@ export default function ProfilePage(props) {
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                  <MDBInput label='Email Address' id='typeEmail' type='Email' value={emailValue} onChange={(e) => setemailValue(e.target.value)} />
+                  <MDBInput id='typeEmail' type='Email' value={emailValue} onChange={(e) => setemailValue(e.target.value)} disabled />
                     {/* <MDBCardText className="text-muted">example@example.com</MDBCardText> */}
                   </MDBCol>
                 </MDBRow>

@@ -10,11 +10,14 @@ import logo from "./rider.png";
 import './RiderProfile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar,faWallet, faMotorcycle} from "@fortawesome/free-solid-svg-icons"
-import { Link } from 'react-router-dom';
+import { Link,  useLocation } from 'react-router-dom';
 
-export default function ProfilePage() {
+export default function ProfilePage(props) {
 
-  
+  const location = useLocation();
+  const data = location.state;
+
+  const[emailprop] = React.useState(data.email);
   const[riderInfo,setRiderInfo] = React.useState([{}])
   
 
@@ -33,13 +36,13 @@ export default function ProfilePage() {
   useEffect(() => {
     (async () =>
     {
-      await fetch("/profile/61101-7654321-0").then(
+      await fetch(`/profile/${emailprop}`).then(
         response => response.json()
       ).then(
         data => setRiderInfo(data))
    })();
 
-  }, []);
+  }, [emailprop]);
 
   return (
     <div>
@@ -59,11 +62,11 @@ export default function ProfilePage() {
                   className="rounded-circle"
                   style={{ width: '150px' }}
                   fluid />
-                  <p>     </p>
+                  <p><br></br></p>
                 <p className="text-muted mb-1">{riderInfo.rider.bio}</p>
                 <p className="text-muted mb-4">{riderInfo.rider.address}</p>
                 <div className="d-flex justify-content-center mb-2">
-                  <Link to={'/updateRiderProfile'} state={{bio: riderInfo.rider.bio, name: riderInfo.rider.name, email: riderInfo.rider.email, mobile: riderInfo.rider.mobilenumber, cnic: riderInfo.rider.cnic, address: riderInfo.rider.address, deliveries: riderInfo.rider.deliveries, rating: riderInfo.rider.rating, wallet:riderInfo.rider.wallet}}>
+                  <Link to={'/rider/updateRiderProfile'} state={{bio: riderInfo.rider.bio, name: riderInfo.rider.name, email: riderInfo.rider.email, mobile: riderInfo.rider.mobilenumber, cnic: riderInfo.rider.cnic, address: riderInfo.rider.address, deliveries: riderInfo.rider.deliveries, rating: riderInfo.rider.rating, wallet:riderInfo.rider.wallet}}>
                   <MDBBtn className="updatebutton">Update</MDBBtn>
                   </Link>
                 </div>

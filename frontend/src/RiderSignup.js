@@ -6,7 +6,7 @@ from 'mdb-react-ui-kit';
 import logo from "./ridersignupnew.png";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate , Link} from 'react-router-dom';
 import './RiderSignup.css';
 
 export default function RiderSignup() {
@@ -175,7 +175,9 @@ export default function RiderSignup() {
                   </MDBRow>
 
                   <div className="d-flex justify-content-center pt-3">
+                    <Link to='/rider/RiderLogin'>
                     <MDBBtn outline color='success' size='lg'>Login Instead</MDBBtn>
+                    </Link>
                     <MDBBtn className='ms-2' color='success' size='lg' onClick={validateSignup}>Submit form</MDBBtn>
                     <ToastContainer/>
                   </div>
