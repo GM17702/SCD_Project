@@ -15,6 +15,15 @@ h1{
   font-size: 20px !important;
 }
 
+h2{
+  font-size: 40px !important;
+}
+
+.price{
+  position:relative;
+   left:5px; 
+   top:8px;
+}
 .row{
   padding: 1rem;
   text-align: center; 
@@ -32,4 +41,19 @@ h1{
 select{
   box-shadow: none !important;
   border-color: black !important; 
+}
+
+.fa-plus{
+  color: green ;
+  margin: 5px
+}
+
+.fa-minus{
+  color: red ;
+  margin : 5px
+}
+
+.fa-trash{
+  color: red;
+  font-size: large;
 }

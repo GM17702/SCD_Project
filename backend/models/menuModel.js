@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const menuSchema = new mongoose.Schema({
     name: {type: String },
-    prices: {type: Number},
+    varients: [],
+    prices: [],
     category : {type: String},
     description : {type: String}
 },
@@ -11,6 +12,6 @@ const menuSchema = new mongoose.Schema({
 })
 
 
-const MenuModel = mongoose.model('menu', menuSchema)
+const MenuModel = mongoose.model('menus', menuSchema)
 
 export default MenuModel;

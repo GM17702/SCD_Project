@@ -1,15 +1,4 @@
-/*
-const express = require('express')
-const app = express()
-
-app.get("/api", (req, res) =>{
-    res.json({"users":["userone", "usertwo", "userthree"] })
-})
-
-app.listen(5000, () => {console.log("server started congrats!")})*/
-
 import express from 'express';
-// const db = require("./db")
 import MenuRoute from './MenuRoute.js'
 import MenuModel from './models/menuModel.js';
 import cors from 'cors';
@@ -44,6 +33,7 @@ createmenu.save(function(err, menuModel){
     }
 })
 */
-app.use('/menu' , MenuRoute)
+
+app.use('/api/props/getallfoods' , MenuRoute)
 
 app.listen(port, ()=> console.log('Mongo connected'))
