@@ -1,38 +1,38 @@
-/**
- * This is a basic starting point of the assignment
- * Modify the code according to your own needs and requirements
- */
+import express from 'express'
+import cors from 'cors'
 
-//const express = require('express')
-import express from 'express'; // <-- Module Style import
-import bodyParser from 'body-parser';
+const app= express();
+import mongoose from 'mongoose'
 
-// Importing user route
-import router from './routes/users.js';
-// const router = require('router')
+import userModel from './model/users.js';
 
-// const bodyParser = require('body-parser')
 
-const app = express()
-const port = 3001
 
-app.use(bodyParser.json())
-// Adding a Router
-app.use('/users', router);
 
-app.get('/', (req, res) => {
-    res.send('Hello Universe!')
+app.use(cors());
+
+
+app.use(express.json());
+
+mongoose.connect("mongodb+srv://ZaryabHasan:zabishahr@fds.iy1rnqv.mongodb.net/FDS?retryWrites=true&w=majority")
+
+app.get("/getusers",  async (req, res) => {
+
+  const user=   await userModel.find()
+  res.json({user})
 })
 
-app.get('/todos', (req, res) => {
-    res.send('A list of todo items will be returned')
-})
+app.post("/createuser", async (req, res) => {
+  const newuser=await userModel.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    repPassword: req.body.repPassword
+  })
 
-app.post('/', (req, res) => {
-    console.log(req.body)
-    res.send('Posting a Request')
+  console.log("New User Created")
+    
 })
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+app.listen(3002, () =>{
+    console.log("Server running");
 })
