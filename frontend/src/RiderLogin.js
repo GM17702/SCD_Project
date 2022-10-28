@@ -21,7 +21,6 @@ export default function RiderLogin()
   const AuthenticateLogin = async event => {
 
     const emailcheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    console.log("HI")
 
 
     if (!emailValue || !passwordValue)

@@ -8,6 +8,7 @@ import RiderOrder from './RiderOrder';
 import RiderProfileUpdate from './RiderProfileUpdate';
 import RiderSignup from './RiderSignup';
 import RiderLogin from './RiderLogin';
+import RiderHome from './RiderHome/RiderHome';
 import Footer from './Footer';
 // import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -26,6 +27,7 @@ root.render(
           <Route path='/rider/updateRiderProfile' element={<div><RiderProfileUpdate /></div>} />
           <Route path='/rider/RiderProfile' element={<div><RiderProfile /></div>} />
           <Route path='/rider/RiderOrders' element={<div><RiderOrder /></div>} />
+          <Route path='/rider/RiderHome' element={<div><RiderHome /></div>} />
         </Routes> 
       <Footer />
       <ToastContainer/>

@@ -8,18 +8,21 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 
 function RiderNavbar() {
+  
   return (
     <Navbar className="navbar navbar-default navbar-fixed-top">
     <Container className="container">
       <div className="navbar-header">
-        <Navbar.Brand className="navbar-brand" ><img className="navlogo" src={logo} alt="logo"></img><b>Food<span>Panda</span></b></Navbar.Brand>
+        <Navbar.Brand className="navbar-brand" ><img className="navlogo" src={logo} alt="logo"></img><b>Shapaatar<span>meals</span></b></Navbar.Brand>
       </div>
       <Navbar.Collapse className="collapse navbar-collapse" >
         <Nav className="ms-auto">
         
           <li className="nav-item" >
           <i className="bi bi-1-square-fill"></i>
+          <LinkContainer to='/rider/RiderHome'>
              <Nav.Link  className="ml-auto" >Home</Nav.Link>
+             </LinkContainer>
            </li>
            <li className="nav-item" >
            <LinkContainer to='/rider/RiderOrders'>
@@ -29,11 +32,7 @@ function RiderNavbar() {
            <li className="navfbr">
             <Nav.Link className="ml-auto" >Completed Deliveries</Nav.Link>
             </li>
-            <li className="nav-item">
-            <LinkContainer to='/rider/RiderProfile'>
-            <Nav.Link className="ml-auto" >Profile</Nav.Link>
-            </LinkContainer>
-            </li>
+            
            <li className="nav-item">
            <LinkContainer to='/rider/RiderLogin'>
             <Nav.Link className="ml-auto" >Log out</Nav.Link>
