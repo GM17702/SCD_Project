@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 
 export default function RestaurantMenuFoodList({foodData}) {
 
+  const [show, setShow] = useState(false);
+  const handleClose = () =>{ setShow(false); }
+  const handleShow = () =>{ setShow(true); }
 
 
     return (
@@ -62,7 +66,7 @@ export default function RestaurantMenuFoodList({foodData}) {
         //               class="fas fa-angle-down mt-1"></i></a></p>
         //       </div>
         //     </div>
-    
+        <> 
             <div class="card rounded-3 mb-4">
               <div class="card-body p-4">
                 <div class="row d-flex justify-content-between align-items-center">
@@ -93,13 +97,29 @@ export default function RestaurantMenuFoodList({foodData}) {
                     <h5 class="mb-0">{foodData.Price}$</h5>
                   </div>
                   <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                    <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                    <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg" onClick={handleShow}></i></a>
                   </div>
                 </div>
               </div>
             </div>
-  
 
+
+<Modal show={show} onHide={handleClose}>
+<Modal.Header closeButton>
+  <Modal.Title>ALERT!!</Modal.Title>
+</Modal.Header>
+<Modal.Body>Are you sure you want to Delete the food item?</Modal.Body>
+<Modal.Footer>
+  <Button variant="secondary" onClick={handleClose}>
+    no
+  </Button>
+  <Button variant="primary"  onClick={handleClose}> 
+    yes
+  </Button>
+</Modal.Footer>
+</Modal>
+  
+</>
     );
 
 

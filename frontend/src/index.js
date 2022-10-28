@@ -31,7 +31,7 @@ root.render(
     <React.StrictMode>
 
     <RestaurantNavbar />
-     {/* <Profile/> */}
+     <Profile/>
 
      {/* <RestaurantMenu/>  */}
      <Menu/>
