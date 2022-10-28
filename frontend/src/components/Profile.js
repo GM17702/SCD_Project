@@ -1,4 +1,5 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
+
 import he from '../assets/27470349_7309670.jpg'
 import {
   MDBCol,
@@ -19,8 +20,28 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function Profile() {
+
+  const [customerinfo, setcustomerinfo]= useState([{}])
+
+      useEffect(() => {
+    (async () =>
+    {
+      await fetch(`/getcustomerprofile`).then(
+        response => response.json()
+      ).then(
+        data => setcustomerinfo(data))
+   })();
+
+  }, []);
+
   return (
-    <section style={{ backgroundColor: '#FBFBFB'}}>
+
+      <div>
+
+{(typeof customerinfo.cust === 'undefined') ? (
+<p>Loading</p>
+) : (
+         <section style={{ backgroundColor: '#FBFBFB'}}>
       <MDBContainer className="py-5">
        
         <MDBRow>
@@ -33,7 +54,7 @@ export default function Profile() {
                   className="rounded-circle"
                   style={{ width: '150px' }}
                   fluid />
-                <p className="text-muted mb-1">Ijaz Ahmed</p>
+                <p className="text-muted mb-1">{customerinfo.cust.name}</p>
                 <p className="text-muted mb-4">Adiala Road St#09 House DK-314</p>
                 <div className="d-flex justify-content-center mb-2">
                   <MDBBtn className="p-2 ms-1 bg-success text-white" color="white">Edit</MDBBtn>
@@ -97,6 +118,11 @@ export default function Profile() {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
-    </section>
+    </section> 
+)}
+      </div>
+
+
+   
   );
 }
