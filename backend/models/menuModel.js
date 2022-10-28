@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const menuSchema = new mongoose.Schema({
-    name: {type: String },
-    varients: [],
-    prices: [],
-    category : {type: String},
-    description : {type: String}
+    food_id: {type: 'string',  unique: true},
+    name: {type: 'string'},
+    varient: {type: 'string'},
+    price: {type: 'number'},
+    quantity: {type: 'number'},
 },
 {
     timestamps: true

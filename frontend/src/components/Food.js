@@ -16,8 +16,21 @@ export default function Food({props}) {
   const handleShow = () => setShow(true);
 
   const dispatch = useDispatch()
-  function addtocart()
+
+
+
+   const addtocart= async() =>
   {
+    var food_id = props.food_id
+    var name = props.name
+    var varient = Varient
+    var quantity = Quantity
+    var price = props.prices[0][Varient]*Quantity
+    await fetch('/menumanagement/create', {
+      method: 'post',
+      body: JSON.stringify({food_id,name, quantity, varient ,price}),
+      headers: {'Content-Type': 'Application/JSON'}
+    })
     dispatch(addToCart(props, Quantity, Varient))
   }
 
@@ -62,7 +75,7 @@ export default function Food({props}) {
 </div>
 
 <div className='w-100'>
-<button className='btn' onClick={addtocart}>ADD TO CART</button>
+<button className="p-2 ms-1 bg-success text-white" onClick={addtocart}>ADD TO CART</button>
 </div>
     </div>
 

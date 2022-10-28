@@ -12,6 +12,7 @@ export default function Home(){
     
     return(
        <div>
+     
         <div className="row justify-content-center">
 
             {menu.map(props=>{
@@ -20,6 +21,7 @@ export default function Home(){
             </div>
             })}
         </div>
+     
        </div>
     )
 }

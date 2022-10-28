@@ -1,9 +1,8 @@
 import express from 'express';
 import MenuRoute from './MenuRoute.js'
-import MenuModel from './models/menuModel.js';
 import cors from 'cors';
 const app = express();
-const port = process.env.PORT || 5000;
+const port  = 5000;
 app.use(express.json());
 app.use(cors())
 
@@ -34,6 +33,6 @@ createmenu.save(function(err, menuModel){
 })
 */
 
-app.use('/api/props/getallfoods' , MenuRoute)
+app.use('/menumanagement' , MenuRoute)
 
 app.listen(port, ()=> console.log('Mongo connected'))

@@ -1,6 +1,6 @@
 
 const menu = [{
-    "food_id": 1,
+    "food_id": "CRT1001",
     "name": "Pindi Biryani",
     "varients":[
         "Chicken_biryani",
@@ -21,7 +21,7 @@ const menu = [{
 },
 
 {
-    "food_id": 2,
+    "food_id": "CRT1002",
     "name": "Burger Biryani",
     "varients":[
         "Chicken_biryani",
@@ -45,7 +45,7 @@ const menu = [{
 ,
 
 {
-    "food_id": 3,
+    "food_id": "CRT1003",
     "name": "Lahori Biryani",
     "varients":[
         "Chicken_biryani",
@@ -69,7 +69,7 @@ const menu = [{
 ,
 
 {
-    "food_id": 4,
+    "food_id": "CRT1004",
     "name": "Karachi Biryani",
     "varients":[
         "Chicken_biryani",
@@ -91,7 +91,7 @@ const menu = [{
 ,
 
 {
-    "food_id": 5,
+    "food_id": "CRT1005",
     "name": "Hyderabad Biryani",
     "varients":[
         "Chicken_biryani",
@@ -114,7 +114,7 @@ const menu = [{
 ,
 
 {
-    "food_id": 6,
+    "food_id": "ORD1006",
     "name": "Quetta Biryani",
     "varients":[
         "Chicken_biryani",

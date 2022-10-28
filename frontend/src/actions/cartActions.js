@@ -16,9 +16,11 @@ localStorage.setItem('cartItems', JSON.stringify(cartItems))
 
 }
 
-export const deleteFromCart=(food)=>dispatch=>{
+export const deleteFromCart=(food)=>(dispatch, getState)=>{
 
 dispatch({type : 'DELETE_FROM_CART', payload:food})
+const cartItems = getState().cartReducer.cartItems
+localStorage.setItem('cartItems', JSON.stringify(cartItems))
 
 
 }

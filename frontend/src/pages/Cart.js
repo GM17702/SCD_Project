@@ -5,15 +5,9 @@ const Cart = () =>{
 
     const cartstate = useSelector(state=> state.cartReducer)
     const cartItems = cartstate.cartItems
-    
+    var subtotal = cartItems.reduce((x, item)=> x+item.price, 0)
     const dispatch = useDispatch()
   
-    /*
-    <h1 style={{display: 'inline'}}>quantity: </h1>
-    <i className="fa fa-plus" aria-hidden="true" onClick={()=>{dispatch(addToCart(item, ( parseInt(item.quantity)+parseInt(1)), item.varient ))}}></i>
-    <b>{item.quantity}</b>
-    <i className="fa fa-minus" aria-hidden="true" onClick={()=>{dispatch(addToCart(item, ( parseInt(item.quantity)-parseInt(1)), item.varient ))}}></i> 
-    */
     return(
         <div>
             <div className="row justify-content-center">
@@ -32,14 +26,15 @@ const Cart = () =>{
                                 </div>
                                
                                 <div className="m-1 w-100">
-                                <button className='btn' onClick={()=>{dispatch(deleteFromCart(item))}}>DELETE</button>
+                                <button className="p-2 ms-1 bg-success text-white" color="white" onClick={()=>{dispatch(deleteFromCart(item))}}>DELETE</button>
                                    
                                 </div>
                             </div>
                             })}
                     </div>
                     <div className="col-md-4">
-
+                        <h2 style = {{fontSize: '45px'}}>Total Price: {subtotal}/- </h2>
+                        <button className="p-2 ms-1 bg-success text-white" color="white" > Confirm Order</button>
                     </div>
             </div>
         </div>
