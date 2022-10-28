@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 import { MDBCol, MDBContainer,  MDBRow,  MDBCard,  MDBCardText,  MDBCardBody,  MDBCardImage,  MDBBtn, MDBInput, } from 'mdb-react-ui-kit';
-import logo from "./rider.png";
+import logo from '../RiderProfile/rider.png';
 import './RiderProfileUpdate.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar,faWallet, faMotorcycle} from "@fortawesome/free-solid-svg-icons"

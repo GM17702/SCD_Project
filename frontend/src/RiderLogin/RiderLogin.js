@@ -1,9 +1,9 @@
 import React from 'react'
-import './RiderLogin/main.css';
-import logo from './RiderLogin/riderlogin.png';
-import riderlogo from './rider.png';
-import './RiderLogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
-import './RiderLogin/fonts/iconic/css/material-design-iconic-font.min.css';
+import './main.css';
+import logo from './riderlogin.png';
+import riderlogo from '../RiderProfile/rider.png';
+import './fonts/font-awesome-4.7.0/css/font-awesome.min.css';
+import './fonts/iconic/css/material-design-iconic-font.min.css';
 import { toast } from 'react-toastify';
 import {useNavigate , Link} from 'react-router-dom';
 
