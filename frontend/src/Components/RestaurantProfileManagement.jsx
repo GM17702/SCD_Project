@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect , useState } from 'react';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import "bootstrap/dist/js/bootstrap.min";
 // import { MDBContainer,} from 'react-bootstrap';
@@ -25,30 +26,35 @@ import { MDBIcon } from 'mdb-react-ui-kit';
 
 const RestaurantProfileManagement = () => {
 
+ 
+
+    
+
+  // const { FoodName, ID, CustomerName, Quantity, CustomerDetails } = props.item;
+
+  const[profileinfo ,setprofileinfo] = React.useState([{}])
+var Dataa;
+
+
+useEffect(() => {
+  (async () =>
+    {
+      await fetch("http://localhost:5000/ValidateOrders").then(
+        response => response.json()
+      ).then(
+        profiledata => setprofileinfo(profiledata))
+   })();
+
+  }, []);
+
 return (
+  <div> 
+  {(typeof profileinfo.profile === 'undefined') ? (
+   <p> Loading... </p>
+           ) : (
 
 <section style={{ backgroundColor: '#eee' }}>
- 
- {/* <MDBContainer className="w-auto p-4 " style={{ backgroundColor: "#808000", width: 200,  height: 1000 }} >   
- <MDBRow >
 
-  <MDBCol className='bg-light shadow-5 text-dark'style={{width: 100, height: 200,}}>
-
-    <MDBCardImage src={logo} alt="avatar" className="rounded-circle"  style={{ width: '150px' }} fluid>
-  
-    </MDBCardImage>
-
-  </MDBCol>
-
-  <MDBCol className="w-50 p-3">
-3
-  </MDBCol>
-  <MDBCol>
-4
-  </MDBCol>
- </MDBRow>
-
-*/}
 
 
 <MDBContainer className="py-5">
@@ -65,7 +71,7 @@ return (
                 <MDBCardText>Full Name</MDBCardText>
               </MDBCol>
               <MDBCol sm="9">
-                <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
+                <MDBCardText className="text-muted">{profileinfo.profile.Profilename}</MDBCardText>
               </MDBCol>
               
             </MDBRow>
@@ -75,7 +81,7 @@ return (
                 <MDBCardText>Email</MDBCardText>
               </MDBCol>
               <MDBCol sm="9">
-                <MDBCardText className="text-muted">example@example.com</MDBCardText>
+                <MDBCardText className="text-muted">{profileinfo.profile.Email}</MDBCardText>
               </MDBCol>
             </MDBRow>
             <hr />
@@ -84,25 +90,18 @@ return (
                 <MDBCardText>Phone</MDBCardText>
               </MDBCol>
               <MDBCol sm="9">
-                <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
+                <MDBCardText className="text-muted">{profileinfo.profile.Phone}</MDBCardText>
               </MDBCol>
             </MDBRow>
             <hr />
-            <MDBRow>
-              <MDBCol sm="3">
-                <MDBCardText>Mobile</MDBCardText>
-              </MDBCol>
-              <MDBCol sm="9">
-                <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
-              </MDBCol>
-            </MDBRow>
-            <hr />
+            
+        
             <MDBRow>
               <MDBCol sm="3">
                 <MDBCardText>Address</MDBCardText>
               </MDBCol>
               <MDBCol sm="9">
-                <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                <MDBCardText className="text-muted">{profileinfo.profile.Address}</MDBCardText>
               </MDBCol>
             </MDBRow>
           </MDBCardBody>
@@ -121,7 +120,7 @@ return (
               fluid />
               <p>     </p>
             <p className="text-muted mb-1">Your RESTAURANT</p>
-            <p className="text-muted mb-4">HAR LAMHA AAP KE GHAR</p>
+            <p className="text-muted mb-4">HAR LAMHA APP KE SATH</p>
             <p className="text-muted mb-1">BHAROSA RAKH JANI</p>
             
                   
@@ -205,6 +204,14 @@ return (
     </MDBRow>
     </MDBContainer>
 </section>
+
+
+
+
+      
+ )}  
+
+</div>
 
 );
   

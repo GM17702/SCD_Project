@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { useEffect , useState } from 'react';
 
 import ValidateOrders from './ValidateOrders';
 // import CarItem from "../components/UI/CarItem";
@@ -15,10 +16,34 @@ export default function ValidateOrdersList(props) {
     const handleClose = () =>{ setShow(false); }
     const handleShow = () =>{ setShow(true); }
 
+    
+
     const { FoodName, ID, CustomerName, Quantity, CustomerDetails } = props.item;
+
+    const[orderinfo ,setorderinfo] = React.useState([{}])
+  var Dataa;
+
+
+  useEffect(() => {
+    (async () =>
+      {
+        await fetch("http://localhost:5000/ValidateOrders").then(
+          response => response.json()
+        ).then(
+          orderdata => setorderinfo(orderdata))
+     })();
+  
+    }, []);
     return (
-        
-         <>
+
+      <div> 
+      {(typeof orderinfo.order === 'undefined') ? (
+       <p> Loading... </p>
+           ) : (
+
+
+  orderinfo.order.map((Dataa , i) => (
+         
        <tr>
           <td>
             <div className='d-flex align-items-center'>
@@ -29,21 +54,21 @@ export default function ValidateOrdersList(props) {
                 className='rounded-circle'
               />
               <div className='ms-3'>
-                <p className='fw-bold mb-1'>{FoodName}</p>
-                <p className='text-muted mb-0'>Order ID: {ID}</p>
+                <p className='fw-bold mb-1'>{Dataa.FoodName}</p>
+                <p className='text-muted mb-0'>Order ID: {Dataa.orderID}</p>
               </div>
             </div>
           </td>
           <td>
-            <p className='fw-normal mb-1'>{CustomerName} </p>
-            <p className='text-muted mb-0'>{CustomerName}</p>
+            <p className='fw-normal mb-1'>{Dataa.CustomerName} </p>
+            <p className='text-muted mb-0'>{Dataa.CustomerName}</p>
           </td>
           <td>
             <MDBBadge color='success' pill>
               {Quantity}
             </MDBBadge>
           </td>
-          <td>{CustomerDetails}</td>
+          <td>{Dataa.CustomerDetails}</td>
           <td>
             <MDBBtn className='fw-normal mb-1' rounded size='sm' onClick={handleShow}>
               ACCEPT
@@ -56,9 +81,10 @@ export default function ValidateOrdersList(props) {
         </tr>
 
 
-        {/* <Button variant="primary" onClick={handleShow}>
-       
-      </Button> */}
+))
+
+      
+ )}      
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -75,7 +101,7 @@ export default function ValidateOrdersList(props) {
         </Modal.Footer>
       </Modal>
     
-        </>
+  </div>    
     );
 
 

@@ -15,15 +15,14 @@ export default function Profile() {
   return (
     <>
      <BrowserRouter>
-       <Routes>
+     <UpdateRestaurantProfile />
+     <ValidateOrders/>
+
+       {/* <Routes>
           <Route path='/UpdateRestaurantProfile' element={<div><UpdateRestaurantProfile /></div>} />
           <Route path='/' element={<div><RestaurantProfileManagement /></div>} />
           <Route  path='/ValidateOrders' element={<div> <ValidateOrders/>  </div>} />
-
-         
-              
-            
-      </Routes>
+      </Routes> */}
       </BrowserRouter>
     </>
   );
