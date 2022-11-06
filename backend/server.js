@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const colors = require('colors');
 const connectDB = require('./db/db')
 const dotenv = require('dotenv').config();
