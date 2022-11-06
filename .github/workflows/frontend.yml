@@ -30,5 +30,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: Ghulam_Muhammad # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.        
+          folder: /frontend/build # The folder the action should deploy.        
           working-directory: ./frontend
