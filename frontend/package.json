@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "proxy": "http://localhost:3001",
   "private": true,
-  "homepage": "https://GM17702.github.io/frontend/build",
+  "homepage": "https://GM17702.github.io/SCD_Project",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
