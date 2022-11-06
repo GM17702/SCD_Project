@@ -1,8 +1,8 @@
 import React, {useRef} from 'react'
-import Img1 from './fooddeliveryimg1.jpg';
-import Img2 from '../RiderLogin/riderlogin.jpg';
-import Img3 from './foodeliveryimg3.png';
-import { MDBRow, MDBCol, MDBBtn,  MDBCarousel, MDBCarouselItem, } from 'mdb-react-ui-kit';
+//import Img1 from './fooddeliveryimg1.jpg';
+//import Img2 from '../RiderLogin/riderlogin.jpg';
+//import Img3 from './foodeliveryimg3.png';
+import { MDBRow, MDBCol, MDBBtn,} from 'mdb-react-ui-kit';
 import Card from 'react-bootstrap/Card';
 import profilelogo from './profilelogo.png';
 import orderlogo from './orderlogo.png';
