@@ -20,12 +20,15 @@ jobs:
         working-directory: ./frontend
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install and build
+        run: npm install && npm run build
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
-          node-version: ${{ matrix.node-version }}
+          branch: Ghulam_Muhammad # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.        
           working-directory: ./frontend
-      - run: npm ci
-      - run: npm test
-      - run: npm run build --if-present
