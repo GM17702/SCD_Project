@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/GM17702.github.io/SCD_Project/static/css/main.1040cea6.css",
+    "main.js": "/GM17702.github.io/SCD_Project/static/js/main.e58a785e.js",
+    "static/js/787.cda612ba.chunk.js": "/GM17702.github.io/SCD_Project/static/js/787.cda612ba.chunk.js",
+    "static/media/navicon.png": "/GM17702.github.io/SCD_Project/static/media/navicon.b3db76e4050773326648.png",
+    "index.html": "/GM17702.github.io/SCD_Project/index.html",
+    "main.1040cea6.css.map": "/GM17702.github.io/SCD_Project/static/css/main.1040cea6.css.map",
+    "main.e58a785e.js.map": "/GM17702.github.io/SCD_Project/static/js/main.e58a785e.js.map",
+    "787.cda612ba.chunk.js.map": "/GM17702.github.io/SCD_Project/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1040cea6.css",
+    "static/js/main.e58a785e.js"
+  ]
+}
