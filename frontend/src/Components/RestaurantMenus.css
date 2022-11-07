@@ -1,0 +1,25 @@
+.flex-container{
+
+  display: flex !important;
+  
+}
+
+
+.separate-container{
+
+  display: flex !important;
+
+}
+
+
+/* .position-relative-example {
+  height: 200px;
+  width: 100%;
+  background-color: #f5f5f5;
+} */
+/* .position-relative-example div {
+  width: 2em;
+  height: 2em;
+  background-color: #343a40;
+  border-radius: 0.25rem;
+} */
