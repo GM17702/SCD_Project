@@ -128,14 +128,7 @@ import { Link } from 'react-router-dom';
               </MDBCol>
             </MDBRow>
             <hr />
-            <MDBRow>
-              <MDBCol sm="3">
-                <MDBCardText>Mobile</MDBCardText>
-              </MDBCol>
-              <MDBCol sm="9">
-                {/* <MDBCardText className="text-muted">(098) 765-4321</MDBCardText> */}
-              </MDBCol>
-            </MDBRow>
+            
             <hr />
             <MDBRow>
               <MDBCol sm="3">
@@ -198,6 +191,10 @@ import { Link } from 'react-router-dom';
                         <p className="mb-0">Reviews</p>
                     </MDBCardText>
                 </div>
+                <br/>
+                <Link to='/ValidateOrders'>
+              <MDBBtn className="updatebutton">View</MDBBtn>
+              </Link>
             </MDBCardBody>
         </MDBCard>
         </MDBCol>

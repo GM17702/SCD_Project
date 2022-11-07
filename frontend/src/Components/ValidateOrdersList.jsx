@@ -18,7 +18,7 @@ export default function ValidateOrdersList(props) {
 
     
 
-    const { FoodName, ID, CustomerName, Quantity, CustomerDetails } = props.item;
+    // const { FoodName, ID, CustomerName, Quantity, CustomerDetails } = props.item;
 
     const[orderinfo ,setorderinfo] = React.useState([{}])
   var Dataa;
@@ -35,15 +35,16 @@ export default function ValidateOrdersList(props) {
   
     }, []);
     return (
+      
 
-      <div> 
+      <> 
       {(typeof orderinfo.order === 'undefined') ? (
        <p> Loading... </p>
            ) : (
 
 
   orderinfo.order.map((Dataa , i) => (
-         
+       
        <tr>
           <td>
             <div className='d-flex align-items-center'>
@@ -65,7 +66,7 @@ export default function ValidateOrdersList(props) {
           </td>
           <td>
             <MDBBadge color='success' pill>
-              {Quantity}
+              {Dataa.Quantity}
             </MDBBadge>
           </td>
           <td>{Dataa.CustomerDetails}</td>
@@ -79,6 +80,8 @@ export default function ValidateOrdersList(props) {
           </td>
           
         </tr>
+        
+        
 
 
 ))
@@ -101,7 +104,9 @@ export default function ValidateOrdersList(props) {
         </Modal.Footer>
       </Modal>
     
-  </div>    
+  </>  
+    
+  
     );
 
 

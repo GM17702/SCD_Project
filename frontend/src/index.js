@@ -2,39 +2,56 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import RestaurantNavbar from './Components/RestaurantNavbar';
-
+import UpdateRestaurantProfile from './Components/UpdateRestaurantProfile';
+import ValidateOrders from './Components/ValidateOrders';
+import RestaurantMenu from './Components/RestaurantMenu';
+import RestaurantMenuFoodList from './Components/RestaurantMenuFoodList';
 
 import Menu from './Pages/Menu'
-// import RestaurantProfileManagement from './Components/RestaurantProfileManagement';
+import RestaurantProfileManagement from './Components/RestaurantProfileManagement';
 // import UpdateRestaurantProfile from './Components/UpdateRestaurantProfile';
 // import ValidateOrders from './Components/ValidateOrders';
 import Profile from './Pages/Profile';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router , Routes, Route , } from 'react-router-dom';
 
 
 
-// import './RestaurantNav.css';
-// import './RestaurantMenuManagement.css';
-// import RestaurantNavbar from './Components/RestaurantNavbar';
-// import RestaurantMenuManagement from './RestaurantMenuManagement'
-// import reportWebVitals from './reportWebVitals';
-// import Counter from './components/counter';
-// const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <BrowserRouter>
-    <React.StrictMode>
+  <>
+     {/* <React.StrictMode>  */}
+    
+    
+    {/* <RestaurantProfileManagement /> */}
+     {/* <Profile/> */}
+     {/* <UpdateRestaurantProfile/> */}
 
-    <RestaurantNavbar />
-     <Profile/>
+     <Router>
+     <RestaurantNavbar/>
+     {/* <RestaurantProfileManagement />  */}
+
+     <Routes>
+  
+       <Route path='/' element={<div><Profile /></div>} />
+          <Route path='/UpdateRestaurantProfile' element={<div><UpdateRestaurantProfile /></div>} />          
+          <Route  path='/ValidateOrders' element={<div> <ValidateOrders/>  </div>} />
+        <Route  path='./RestaurantMenuFoodList' element={<div><RestaurantMenuFoodList/></div>} /> 
+        <Route  path='/RestaurantMenu' element={<RestaurantMenu/>} /> 
+
+        {/* <Route path="/" element={<Home />} />
+      <Route path="/Cart" element={<Cart />} />
+      <Route path="/Profile" element={<Profile />} /> */}
+      </Routes>
+    </Router>
 
      {/* <RestaurantMenu/>  */}
-     <Menu/>
+     {/* <Menu/> */}
      
     {/* <NotificationPop/> */}
     
@@ -45,8 +62,9 @@ root.render(
       </Routes> */}
 
       
-  //   </React.StrictMode>
-  //  </BrowserRouter>
+       {/* </React.StrictMode>  */}
+       </>
+    // </BrowserRouter>
   
 );
 

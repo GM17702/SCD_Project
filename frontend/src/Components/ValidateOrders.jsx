@@ -50,7 +50,7 @@ export default function ValidateOrders() {
 
 
     <MDBContainer className="py-5">
-    <h3 align='middle' >NOTIFICATIONS</h3>
+    <h3 align='middle' >NEW ORDERS</h3>
     <MDBTable align='middle'>
       <MDBTableHead>
         <tr>
@@ -63,8 +63,8 @@ export default function ValidateOrders() {
       </MDBTableHead>
       <MDBTableBody>
       
-      {orderData.map((item) => ( <ValidateOrdersList item={item} key={item.id} /> ))} 
-       
+      {/* {orderData.map((item) => ( <ValidateOrdersList item={item} key={item.id} /> ))}  */}
+      <ValidateOrdersList/>
       
         {/* <tr>
           <td>

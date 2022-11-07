@@ -22,7 +22,10 @@ FOOD ITEMS
   {/* {foodData.map((item) => ( <RestaurantMenuFoodList item={item} key={item.id} /> ))} 
 
    */}
+
+
    
+   {/* changes===========================
 
    {foodData.map(foodData=>(
      
@@ -30,7 +33,11 @@ FOOD ITEMS
    
    )
     
-    )}
+    )} */}
+
+<RestaurantMenuFoodList/>
+
+
   
     
     {/* <div class="col-md">

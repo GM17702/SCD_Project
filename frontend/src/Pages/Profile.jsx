@@ -14,16 +14,19 @@ export default function Profile() {
           
   return (
     <>
-     <BrowserRouter>
-     <UpdateRestaurantProfile />
-     <ValidateOrders/>
-
+    {/* <React.StrictMode> */}
+     {/* <BrowserRouter> */}
+     {/* <UpdateRestaurantProfile />
+     <ValidateOrders/> */}
+     {/* <ValidateOrders/> */}
+<RestaurantProfileManagement />
        {/* <Routes>
           <Route path='/UpdateRestaurantProfile' element={<div><UpdateRestaurantProfile /></div>} />
           <Route path='/' element={<div><RestaurantProfileManagement /></div>} />
           <Route  path='/ValidateOrders' element={<div> <ValidateOrders/>  </div>} />
       </Routes> */}
-      </BrowserRouter>
-    </>
+      {/* </BrowserRouter> */}
+      {/* </React.StrictMode> */}
+      </>
   );
 }
