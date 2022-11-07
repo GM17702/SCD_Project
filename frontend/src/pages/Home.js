@@ -1,15 +1,9 @@
 import React ,{useState, useEffect}from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {getAllFoods} from '../actions/foodAction'
 import menu from "../Data";
 import Food from "../components/Food";
 export default function Home(){
 
-    const dispatch = useDispatch()
-    useEffect(()=>{
-        dispatch(getAllFoods())
-    }, [])
-    
+   
     return(
        <div>
      

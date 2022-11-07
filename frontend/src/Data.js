@@ -15,7 +15,7 @@ const menu = [{
     }
     ],
     "category": "special",
-    "image": require("../src/assets/biryani.jpeg"),
+    "image": require("../src/assets/biryani.jpg"),
     "description": "Best biryani in town is here"
 
 },
@@ -37,7 +37,7 @@ const menu = [{
     }
     ],
     "category": "special",
-    "image": require("../src/assets/biryani.jpeg"),
+    "image": require("../src/assets/biryani.jpg"),
     "description": "Best biryani in town is here"
 
 }
@@ -60,7 +60,7 @@ const menu = [{
     }
     ],
     "category": "special",
-    "image": require("../src/assets/biryani.jpeg"),
+    "image": require("../src/assets/biryani.jpg"),
     "description": "Best biryani in town is here"
 
 }
@@ -84,7 +84,7 @@ const menu = [{
     }
     ],
     "category": "special",
-    "image": require("../src/assets/biryani.jpeg"),
+    "image": require("../src/assets/biryani.jpg"),
     "description": "Best biryani in town is here"
 
 }
@@ -106,7 +106,7 @@ const menu = [{
     }
     ],
     "category": "special",
-    "image": require("../src/assets/biryani.jpeg"),
+    "image": require("../src/assets/biryani.jpg"),
     "description": "Best biryani in town is here"
 
 }
@@ -114,7 +114,7 @@ const menu = [{
 ,
 
 {
-    "food_id": "ORD1006",
+    "food_id": "CRT1006",
     "name": "Quetta Biryani",
     "varients":[
         "Chicken_biryani",
@@ -129,7 +129,7 @@ const menu = [{
     }
     ],
     "category": "special",
-    "image": require("../src/assets/biryani.jpeg"),
+    "image": require("../src/assets/biryani.jpg"),
     "description": "Best biryani in town is here"
 
 }

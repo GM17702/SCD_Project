@@ -8,6 +8,7 @@ import Cart from './pages/Cart';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile'
 import Footer from './components/Footer'
+import EditProfile from './components/EditProfile'
 import bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {Provider} from 'react-redux'
 import store from './store'
@@ -22,6 +23,7 @@ root.render(
       <Route path="/" element={<Home />} />
       <Route path="/Cart" element={<Cart />} />
       <Route path="/Profile" element={<Profile />} />
+      <Route path="/EditProfile" element={<EditProfile />} />
       </Routes>
      <Footer/>
       </Provider>

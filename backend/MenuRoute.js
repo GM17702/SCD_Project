@@ -1,8 +1,8 @@
 import express  from "express";
 const router = express.Router();
 import menuModel from './models/menuModel.js'
-
-router.post("/create", async(req, res)=>{
+import Customer from './models/Customer.js'
+router.post("/menumanagement/create", async(req, res)=>{
 try{
      const menu = await menuModel.create({
      food_id: req.body.food_id,
@@ -18,4 +18,14 @@ try{
 }
 
 })
+
+router.get('/getcustomerprofile', async (req,res,next)=>{
+    
+       const cust = await Customer.findOne();
+      res.json({cust});
+    
+   });
+
+
+
 export default router

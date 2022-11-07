@@ -8,7 +8,11 @@
 }
 
 .nav-link{
-  color: black !important;
+  color: white !important;
+}
+
+.navbar-brand{
+  color: white !important;
 }
 
 h1{
@@ -56,3 +60,31 @@ select{
   color: red;
   font-size: large;
 }
+.edit{
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  width: 75px;
+  transition-duration: 0.4s;
+  margin:5px;
+  text-decoration: none;
+}
+  
+  .edit:hover {
+    background-color: green; 
+    color: white;
+  }
+
+  .edit1{
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+    width: 100px;
+    transition-duration: 0.4s;
+    margin:5px
+  }
+    
+    .edit1:hover {
+      background-color: green; 
+      color: white;
+    }

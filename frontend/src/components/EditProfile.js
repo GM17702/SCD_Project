@@ -1,5 +1,5 @@
 import {React, useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom'
 import he from '../assets/27470349_7309670.jpg'
 import {
   MDBCol,
@@ -7,6 +7,7 @@ import {
   MDBRow,
   MDBCard,
   MDBCardText,
+  MDBInput,
   MDBCardBody,
   MDBCardImage,
   MDBBtn,
@@ -19,31 +20,21 @@ import {
   MDBListGroupItem
 } from 'mdb-react-ui-kit';
 
-export default function Profile() {
+export default function EditProfile() {
 
+  const location = useLocation()
+  const { from } = location.state
+const [pname, setpname] = useState([from.cust.name])
+const [pemail, setpemail] = useState([from.cust.email])
+const [pphone, setpphone] = useState([from.cust.phone])
+const [paddress, setpaddress] = useState([from.cust.address])
 
-
-  const [customerinfo, setcustomerinfo]= useState([{}])
-
-      useEffect(() => {
-    (async () =>
-    {
-      await fetch(`/getcustomerprofile`).then(
-        response => response.json()
-      ).then(
-        data => setcustomerinfo(data))
-   })();
-
-  }, []);
-
+ 
   return (
-
-      <div>
-
-{(typeof customerinfo.cust === 'undefined') ? (
-<p>Loading</p>
-) : (     
+  
          <section style={{ backgroundColor: '#FBFBFB'}}>
+
+
       <MDBContainer className="py-5">
        
         <MDBRow>
@@ -56,10 +47,11 @@ export default function Profile() {
                   className="rounded-circle"
                   style={{ width: '150px' }}
                   fluid />
-                <p className="text-muted mb-1">{customerinfo.cust.name}</p>
-                <p className="text-muted mb-4">{customerinfo.cust.address}</p>
+                <p className="text-muted mb-1">{}</p>
+                <p className="text-muted mb-4">{}</p>
                 <div className="d-flex justify-content-center mb-2">
-                <Link to="/EditProfile" className="edit" state={{ from: customerinfo }}>Edit </Link> 
+               
+                <button className='edit'>Update</button>
                   <button className="edit1">Message</button>
                 </div>
               </MDBCardBody>
@@ -69,13 +61,13 @@ export default function Profile() {
           </MDBCol>
           <MDBCol lg="12">
             <MDBCard className="mb-4">
-              <MDBCardBody> 
+              <MDBCardBody>
                 <MDBRow>
                   <MDBCol sm="3">
                     <MDBCardText>Full Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{customerinfo.cust.name} </MDBCardText>
+                  <MDBInput style={{textAlign: 'center' }} type='name' value={pname} onChange={(e) => setpname(e.target.value)} />
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -84,7 +76,7 @@ export default function Profile() {
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{customerinfo.cust.email}</MDBCardText>
+                  <MDBInput style={{textAlign: 'center' }} type='email' value={pemail} onChange={(e) => setpemail(e.target.value)} />
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -93,7 +85,7 @@ export default function Profile() {
                     <MDBCardText>Phone</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{customerinfo.cust.phone}</MDBCardText>
+                  <MDBInput style={{textAlign: 'center' }} type='phone' value={pphone} onChange={(e) => setpphone(e.target.value)} />
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -103,7 +95,7 @@ export default function Profile() {
                     <MDBCardText>Address</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{customerinfo.cust.address}</MDBCardText>
+                  <MDBInput style={{textAlign: 'center' }} type='name' value={paddress} onChange={(e) => setpaddress(e.target.value)} />
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>
@@ -114,9 +106,4 @@ export default function Profile() {
       </MDBContainer>
     </section> 
 )}
-      </div>
-
-
-   
-  );
-}
+    
