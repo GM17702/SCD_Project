@@ -49,7 +49,7 @@ export default function RiderLogin()
           if (response.status === 200)
           {
             toast.success('Login Authenticated!', {position: toast.POSITION.TOP_RIGHT});
-            navigate('/rider/RiderProfile',{state:{email : email}});    
+            navigate('/rider/RiderHome',{state:{email : email}});    
           }
           else
           {

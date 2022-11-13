@@ -18,6 +18,11 @@ const orderSchema = mongoose.Schema({
         required: true,
     },
 
+    riderid :{
+        type: 'string',
+        required: false
+    },
+
     orderprice :{
         type: 'number',
         required: true,
@@ -44,7 +49,7 @@ const orderSchema = mongoose.Schema({
     },
 
     riderConfirmed :{
-        type: 'string',
+        type: 'boolean',
         required: true
     },
 

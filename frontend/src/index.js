@@ -9,6 +9,7 @@ import RiderProfileUpdate from './RiderUpdateProfile/RiderProfileUpdate';
 import RiderSignup from './RiderSignup/RiderSignup';
 import RiderLogin from './RiderLogin/RiderLogin';
 import RiderHome from './RiderHome/RiderHome';
+import RiderDeliveries from './RiderDeliveries/RiderDeliveries';
 import Footer from './Footer/Footer';
 // import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -20,14 +21,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     {/* <React.StrictMode> */}
-      <RiderNavbar />
         <Routes>
           <Route path='/rider/RiderLogin' element={<div><RiderLogin /></div>} />
           <Route path='/rider/riderSignup' element={<div><RiderSignup /></div>} />
-          <Route path='/rider/updateRiderProfile' element={<div><RiderProfileUpdate /></div>} />
-          <Route path='/rider/RiderProfile' element={<div><RiderProfile /></div>} />
-          <Route path='/rider/RiderOrders' element={<div><RiderOrder /></div>} />
-          <Route path='/rider/RiderHome' element={<div><RiderHome /></div>} />
+          <Route path='/rider/updateRiderProfile' element={<div><RiderNavbar /><RiderProfileUpdate /></div>} />
+          <Route path='/rider/RiderProfile' element={<div><RiderNavbar /><RiderProfile /></div>} />
+          <Route forceRefresh={true} path='/rider/RiderOrders' element={<div><RiderNavbar /><RiderOrder /></div>} />
+          <Route forceRefresh={true} path='/rider/RiderDeliveries' element={<div><RiderNavbar /><RiderDeliveries /></div>} />
+          <Route path='/rider/RiderHome' element={<div><RiderNavbar /><RiderHome /></div>} />
         </Routes> 
       <Footer />
       <ToastContainer/>

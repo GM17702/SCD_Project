@@ -5,9 +5,15 @@ import "../../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import { Container, Nav, Navbar} from 'react-bootstrap';
 import logo from "./navicon.png";
 import { LinkContainer } from 'react-router-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 
 function RiderNavbar() {
+
+  const location = useLocation();
+  const data = location.state;
+
+  const[emailprop] = React.useState(data.email);
   
   return (
     <Navbar className="navbar navbar-default navbar-fixed-top">
@@ -20,17 +26,25 @@ function RiderNavbar() {
         
           <li className="nav-item" >
           <i className="bi bi-1-square-fill"></i>
-          <LinkContainer to='/rider/RiderHome'>
+          <LinkContainer to='/rider/RiderHome' state={{email:emailprop}}>
              <Nav.Link  className="ml-auto" >Home</Nav.Link>
              </LinkContainer>
            </li>
            <li className="nav-item" >
-           <LinkContainer to='/rider/RiderOrders'>
+           <LinkContainer to='/rider/RiderOrders' state={{email:emailprop}}>
              <Nav.Link className="ml-auto" >Orders</Nav.Link>
             </LinkContainer>
            </li>
            <li className="navfbr">
-            <Nav.Link className="ml-auto" >Completed Deliveries</Nav.Link>
+           <LinkContainer to='/rider/RiderDeliveries' state={{email:emailprop}}>
+            <Nav.Link className="ml-auto" >Deliver</Nav.Link>
+            </LinkContainer>
+            </li>
+
+            <li className="nav-item">
+           <LinkContainer to='/rider/RiderProfile' state={{email:emailprop}}>
+            <Nav.Link className="ml-auto" >Profile</Nav.Link>
+            </LinkContainer>
             </li>
             
            <li className="nav-item">

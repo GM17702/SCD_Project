@@ -2,18 +2,18 @@ import React, {useState, useEffect, useCallback} from "react";
 import {
   MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBRow, MDBTypography, MDBBtn, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader,
 } from "mdb-react-ui-kit";
-import { ToastContainer, toast } from 'react-toastify';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast} from 'react-toastify';
+import { useLocation, useNavigate} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import './RiderOrder.css'
+import './RiderDeliveries.css'
 
 export default function OrderDetails() {
   
 
   const [basicModal, setBasicModal] = useState(false);
   const [totalPrice, setTotalPrice] = useState(false);
-  const[orderInfo,setOrderInfo] = React.useState([{}])
-  const[orderitemInfo,setOrderitemInfo] = React.useState([{}])
+  const[deliveryInfo,setdeliveryInfo] = React.useState([{}])
+  const[deliveryitemInfo,setdeliveryitemInfo] = React.useState([{}])
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,13 +34,13 @@ export default function OrderDetails() {
   useEffect(() => {
   (async () =>
     {
-      await fetch("/orders").then(
+      await fetch(`/riderAcceptedDeliveries/${emailprop}`).then(
         response => response.json()
       ).then(
-        orderdata => setOrderInfo(orderdata))
+        deliverydata => setdeliveryInfo(deliverydata))
    })();
 
-  }, []);
+  }, [emailprop]);
 
 
 
@@ -48,7 +48,6 @@ export default function OrderDetails() {
 
   const handlingorderitems = useCallback((orderingid) => {
   
-    console.log(orderingid+" is id");
     if (typeof orderingid!=='undefined')
     {
       
@@ -57,7 +56,7 @@ export default function OrderDetails() {
           await fetch(`/orderitems/${orderingid}`).then(
             response => response.json()
           ).then(
-            itemdata => setOrderitemInfo(itemdata))
+            deliveryitemdata => setdeliveryitemInfo(deliveryitemdata))
       })();
       orderingid= undefined;
     }
@@ -69,27 +68,24 @@ export default function OrderDetails() {
   
 
 
-    const acceptdelivery = async(orderid) =>
+    const confirmdelivery = async(orderid) =>
     {
-      
-      let rideremail = emailprop;
-
         (async () =>
       {
-          await fetch(`/acceptRiderOrder/${orderid}`,{
+          await fetch(`/confirmRiderDelivery`,{
 
             method: 'put',
-            body: JSON.stringify({orderid,rideremail}),
+            body: JSON.stringify({orderid}),
             headers: {'Content-Type': 'Application/json'}
   
         });
 
-        toast.success('Delivery Accepted!', {position: toast.POSITION.TOP_RIGHT});
+        toast.success('Order: '+orderid+' Delivered Successfully', {position: toast.POSITION.TOP_RIGHT});
 
         const delay = async(ms) => new Promise(
           resolve => setTimeout(resolve, ms)
         );
-        await delay(2000);
+        await delay(2500);
         navigate(0);
      })();
     }
@@ -100,10 +96,10 @@ export default function OrderDetails() {
   return (
 
     <div>
-      {(typeof orderInfo.order === 'undefined') ? (
+      {(typeof deliveryInfo.order === 'undefined') ? (
       <p> Loading... </p>
       ) : (
-      orderInfo.order.map((neworder , i) => (
+        deliveryInfo.order.map((neworder , i) => (
         <section key={i} className="vh-80">
         <MDBContainer className="py-5 h-100">
           <MDBRow className="justify-content-center align-items-center h-100">
@@ -136,17 +132,17 @@ export default function OrderDetails() {
                     </div>
                     <div className="text-start">
                       <MDBBtn outline className="detailbutton" onClick={()=>{handlingorderitems(neworder.orderid);toggleShow(neworder.orderprice)}}><b>View Details</b></MDBBtn>
-                      <MDBBtn className="updatebutton" onClick={() => acceptdelivery(neworder.orderid)}>Accept Delivery</MDBBtn>
+                      <MDBBtn className="updatebutton" onClick={() => confirmdelivery(neworder.orderid)}>Complete Delivery</MDBBtn>
                       <ToastContainer />
                     </div>
                   </div>
                   <ul
-                    id="progressbar-2"
+                    id="progressbar-5"
                     className="d-flex justify-content-between mx-0 mt-0 mb-5 px-0 pt-0 pb-2"
                   >
                     <li className="step0 active text-center" id="step1"></li>
                     <li className="step0 active text-center" id="step2"></li>
-                    <li className="step0 text-muted text-end" id="step4"></li>
+                    <li className="step0 active text-center" id="step3"></li>
                     <li className="step0 text-muted text-end" id="step4"></li>
                   </ul>
 
@@ -192,7 +188,7 @@ export default function OrderDetails() {
       
       )}
 
-      {(typeof orderitemInfo.orderitem === 'undefined') ? (
+      {(typeof deliveryitemInfo.orderitem === 'undefined') ? (
         <p></p>
         ) : ( 
         <MDBModal staticBackdrop show={basicModal} setShow={setBasicModal} tabIndex="-1">
@@ -209,7 +205,7 @@ export default function OrderDetails() {
                     <MDBTypography tag="h5" className="mb-3">
                         ORDER:{" "}
                         <span className="text-primary font-weight-bold">
-                          #{orderitemInfo.orderitem[0].orderid}
+                          #{deliveryitemInfo.orderitem[0].orderid}
                         </span>
                       </MDBTypography>
                       <p className="mb-0" style={{ color: "#35558a" }}>
@@ -224,7 +220,7 @@ export default function OrderDetails() {
                           borderTop: "2px dashed #9e9e9e",
                         }}
                       />
-                      {orderitemInfo.orderitem.map((newitem , j) => (
+                      {deliveryitemInfo.orderitem.map((newitem , j) => (
                       <div key={j} className="d-flex justify-content-between">
                         <p className="fw-bold mb-0">{newitem.itemname}   (Quantity: {newitem.itemquantity})</p>
                         <p className="text-muted mb-0">${newitem.itemprice}</p>

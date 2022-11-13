@@ -1,4 +1,7 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const morgan = require('morgan');
 const cors = require('cors');
 const colors = require('colors');
 const connectDB = require('./db/db')
@@ -14,6 +17,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
+
 
 // var creatRider = new rider({
 //         cnic: '61101-1234579-9',
@@ -40,11 +44,12 @@ app.use(express.urlencoded({ extended: true}))
 //   });
 
 // var createorder = new order({
-//         orderid: 'ORD1001',
+//         orderid: 'ORD1002',
 //         customerid:'5321',
 //         restaurantid:'321',
-//         orderpickup: 'KFC',
-//         orderdestination: 'H#38, Sector B, Bahria Enclave',
+//         riderid: null,
+//         orderpickup: 'Ye Lon Ma Restaurant',
+//         orderdestination: 'H#38, Sector C1, Bahria Enclave',
 //         orderprice: 1500,
 //         customerConfirmed: true,
 //         restaurantConfirmed: true,
@@ -64,17 +69,17 @@ app.use(express.urlencoded({ extended: true}))
 //   });
 
 // var createorderitem1 = new orderitem({
-//     orderid: 'ORD1001',
-//     itemid:'12',
-//     itemname:'Zinger Burger',
+//     orderid: 'ORD1002',
+//     itemid:'20',
+//     itemname:'Omelette Rice',
 //     itemquantity: 3,
 //     itemprice: 200,
 // });
 
 // var createorderitem2 = new orderitem({
-// orderid: 'ORD1001',
-// itemid:'13',
-// itemname:'Pizza',
+// orderid: 'ORD1002',
+// itemid:'21',
+// itemname:'Chowmen',
 // itemquantity: 2,
 // itemprice: 450,
 // });

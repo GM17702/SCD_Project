@@ -1,68 +1,52 @@
-import React, {useRef} from 'react'
-//import Img1 from './fooddeliveryimg1.jpg';
-//import Img2 from '../RiderLogin/riderlogin.jpg';
-//import Img3 from './foodeliveryimg3.png';
-import { MDBRow, MDBCol, MDBBtn,} from 'mdb-react-ui-kit';
+import React from 'react'
+import Img1 from './fooddeliveryimg1.jpg';
+import Img2 from '../RiderLogin/riderlogin.jpg';
+import Img3 from './foodeliveryimg3.png';
+import { MDBRow, MDBCol, MDBBtn} from 'mdb-react-ui-kit';
 import Card from 'react-bootstrap/Card';
 import profilelogo from './profilelogo.png';
 import orderlogo from './orderlogo.png';
 import deliverylogo from './deliveryicon.PNG';
 import {Link, useLocation} from 'react-router-dom'
+import Carousel from 'react-bootstrap/Carousel';
 
 export default function RiderHome() {
 
 
   const location = useLocation();
   const data = location.state;
-  const emailreference = useRef();
-  var email;
- 
- const setEmail=() => {
-
-    if (data == null) {
-
-        email = emailreference.current;
-        console.log("Email remained was " + email);
-    }
-    else
-    {
-        emailreference.current = data.email;
-        email = emailreference.current;
-        console.log("Email sent was " + email);
-    }
- }
+  
+  const[emailprop] = React.useState(data.email);
 
 
   return (
     
     <div >
-        {setEmail()}
         <MDBRow className='mb-10'>
-        {/* <MDBCarousel showIndicators showControls dark fade dealy={2000}>
-            <MDBCarouselItem
-                className='w-100 d-block'
-                itemId={1}
+        <Carousel variant="dark" controls="false">
+            <Carousel.Item controls="false" dealy={2000}>
+                <img
+                className="d-block w-100"
                 src={Img1}
-                alt='...'
-            >
-            </MDBCarouselItem>
-
-            <MDBCarouselItem
-                className='w-100 d-block'
-                itemId={2}
+                alt="First slide"
+                />
+            </Carousel.Item>
+            <Carousel.Item interval={2000}>
+                <img
+                className="d-block w-100"
                 src={Img2}
-                alt='...'
-            >
-            </MDBCarouselItem>
-
-            <MDBCarouselItem
-                className='w-100 d-block'
-                itemId={3}
+                alt="Second slide"
+                />
+            </Carousel.Item>
+            <Carousel.Item dealy={2000}>
+                <img
+                className="d-block w-100"
                 src={Img3}
-                alt='...'
-            >
-            </MDBCarouselItem>
-        </MDBCarousel> */}
+                alt="Third slide"
+                />
+            </Carousel.Item>
+            </Carousel>
+
          </MDBRow>
 
     <section className="text-center">
@@ -74,7 +58,7 @@ export default function RiderHome() {
                 style={{ width:'80%',   position:'relative', left: '10%', marginTop: '20px'}}
                  />
                 <Card.Body>
-                    <Link to='/rider/RiderProfile' state={{email}}>
+                    <Link to='/rider/RiderProfile' state={{email : emailprop}}>
                     <MDBBtn outline color='info'>Manage Profile</MDBBtn>
                     </Link>
                 </Card.Body>
@@ -86,7 +70,7 @@ export default function RiderHome() {
                 style={{ width:'80%',   position:'relative', left: '10%', marginTop: '20px'}}
                  />
                 <Card.Body>
-                <Link to='/rider/RiderOrders'>
+                <Link to='/rider/RiderOrders' state={{email : emailprop}}>
                 <MDBBtn outline color='warning'>Manage Orders</MDBBtn>
                 </Link>
                 </Card.Body>
@@ -98,7 +82,9 @@ export default function RiderHome() {
                 style={{ width:'80%',   position:'relative', left: '10%', marginTop: '20px'}}
                  />
                 <Card.Body>
-                    <MDBBtn outline color='danger'>Complete Deliveries</MDBBtn>
+                    <Link to='/rider/RiderDeliveries' state={{email : emailprop}}>
+                    <MDBBtn outline color='danger'>Complete Delivery</MDBBtn>
+                    </Link>
                 </Card.Body>
             </Card>
             </MDBCol>
