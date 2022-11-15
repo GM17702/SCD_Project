@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import RiderNavbar from './RiderNavbar/RiderNavbar';
@@ -17,10 +17,11 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    {/* <React.StrictMode> */}
+
         <Routes>
           <Route path='/rider/RiderLogin' element={<div><RiderLogin /></div>} />
           <Route path='/rider/riderSignup' element={<div><RiderSignup /></div>} />
@@ -32,7 +33,7 @@ root.render(
         </Routes> 
       <Footer />
       <ToastContainer/>
-    {/* </React.StrictMode> */}
+
   </BrowserRouter>
 );
 
