@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import {useNavigate , Link} from 'react-router-dom';
 
 
-export default function RiderLogin() 
+export default function RiderLogin({tokengetter}) 
 {
 
   const [emailValue,setemailValue] = React.useState();
@@ -48,6 +48,7 @@ export default function RiderLogin()
 
           if (response.status === 200)
           {
+            tokengetter();
             toast.success('Login Authenticated!', {position: toast.POSITION.TOP_RIGHT});
             navigate('/rider/RiderHome',{state:{email : email}});    
           }
@@ -76,11 +77,11 @@ export default function RiderLogin()
           Log in
         </span><br></br>
         <div className="wrap-input100">
-          <input className="input100" type="text" placeholder="Email" value={emailValue}  onChange={(e) => setemailValue(e.target.value)} />
+          <input className="input100" data-testid="email" type="text" placeholder="Email" value={emailValue}  onChange={(e) => setemailValue(e.target.value)} />
           <span className="focus-input100" data-placeholder="" />
         </div>
         <div className="wrap-input100">
-          <input className="input100" type="password" placeholder="Password" value={passwordValue}  onChange={(e) => setpasswordValue(e.target.value)} />
+          <input className="input100" data-testid="password" type="password" placeholder="Password" value={passwordValue}  onChange={(e) => setpasswordValue(e.target.value)} />
           <span className="focus-input100" data-placeholder="" />
         </div>
         <div className="container-login100-form-btn">

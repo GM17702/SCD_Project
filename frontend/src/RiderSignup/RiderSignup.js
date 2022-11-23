@@ -108,7 +108,7 @@ export default function RiderSignup() {
           else if (response.status === 201)
           {
             toast.success('Signup Successful!', {position: toast.POSITION.TOP_RIGHT});
-            navigate('/');    
+            navigate('/rider/RiderLogin');    
           }
           else
           {

@@ -23,8 +23,8 @@ export default function RiderHome() {
     
     <div >
         <MDBRow className='mb-10'>
-        <Carousel variant="dark" controls="false">
-            <Carousel.Item controls="false" dealy={2000}>
+        <Carousel variant="dark" controls={false}>
+            <Carousel.Item controls={false} dealy={2000}>
                 <img
                 className="d-block w-100"
                 src={Img1}
