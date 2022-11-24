@@ -28,8 +28,26 @@ const [pname, setpname] = useState([from.cust.name])
 const [pemail, setpemail] = useState([from.cust.email])
 const [pphone, setpphone] = useState([from.cust.phone])
 const [paddress, setpaddress] = useState([from.cust.address])
+const [customer_id] = useState([from.cust.customer_id])
 
- 
+
+const validateInput = async event => {
+
+let name = pname;
+let email = pemail;
+let phone = pphone;
+let address = paddress;
+
+
+ await fetch(`/update/${customer_id}`,{
+
+  method: 'put',
+  body: JSON.stringify({name, email, phone, address}),
+  headers: {'Content-Type': 'Application/json'}
+
+});
+}
+
   return (
   
          <section style={{ backgroundColor: '#FBFBFB'}}>
@@ -51,7 +69,7 @@ const [paddress, setpaddress] = useState([from.cust.address])
                 <p className="text-muted mb-4">{}</p>
                 <div className="d-flex justify-content-center mb-2">
                
-                <button className='edit'>Update</button>
+                <button className='edit' onClick={validateInput }>Update</button>
                   <button className="edit1">Message</button>
                 </div>
               </MDBCardBody>

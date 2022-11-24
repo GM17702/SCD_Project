@@ -1,0 +1,33 @@
+name: Node.js
+
+on:
+  push:
+    branches: [ Faizan_Javed ]
+  pull_request:
+    branches: [ Faizan_Javed ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x, 15.x]
+        
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install and build
+        run: npm install && npm run build
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-react-pages # The branch the action should deploy to.
+          folder: ./frontend/build # The folder the action should deploy.        

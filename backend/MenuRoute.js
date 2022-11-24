@@ -26,6 +26,23 @@ router.get('/getcustomerprofile', async (req,res,next)=>{
     
    });
 
+   router.put('/update/:customer_id',  async (req, res) =>{
+
+     const customer = await Customer.updateOne(
+         {customer_id:req.params.customer_id},
+         {$set:{
+             name: req.body.name,
+             email: req.body.email,
+             phone: req.body.phone,
+             address: req.body.address,
+            
+            
+         }})
+ 
+     res.send({customer})
+     console.log('Updated Customer Profile');
+ })
+ 
 
 
 export default router
