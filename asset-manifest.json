@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rider/RiderLogin/static/css/main.d4499662.css",
-    "main.js": "/rider/RiderLogin/static/js/main.efcf555c.js",
+    "main.js": "/rider/RiderLogin/static/js/main.7b585acd.js",
     "static/media/riderlogin.png": "/rider/RiderLogin/static/media/riderlogin.91fe36c6704a31ce624c.png",
     "static/media/ridersignupnew.png": "/rider/RiderLogin/static/media/ridersignupnew.c2b34ebc4637bb76671c.png",
     "static/media/fa-solid-900.svg": "/rider/RiderLogin/static/media/fa-solid-900.7a8b4f130182d19a2d7c.svg",
@@ -43,10 +43,10 @@
     "static/media/arrow_left.svg": "/rider/RiderLogin/static/media/arrow_left.db6e2d88c7c35a775ce4.svg",
     "static/media/arrow_right.svg": "/rider/RiderLogin/static/media/arrow_right.f7c6ac6d310d3b82f0a0.svg",
     "main.d4499662.css.map": "/rider/RiderLogin/static/css/main.d4499662.css.map",
-    "main.efcf555c.js.map": "/rider/RiderLogin/static/js/main.efcf555c.js.map"
+    "main.7b585acd.js.map": "/rider/RiderLogin/static/js/main.7b585acd.js.map"
   },
   "entrypoints": [
     "static/css/main.d4499662.css",
-    "static/js/main.efcf555c.js"
+    "static/js/main.7b585acd.js"
   ]
 }
