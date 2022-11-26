@@ -1,0 +1,4 @@
+#No need to include these files in container
+Dockerfile
+.dockerignore
+node_modules
