@@ -36,7 +36,7 @@ export default function ProfilePage(props) {
   useEffect(() => {
     (async () =>
     {
-      await fetch(`/profile/${emailprop}`).then(
+      await fetch(`http://localhost:3001/profile/${emailprop}`).then(
         response => response.json()
       ).then(
         data => setRiderInfo(data))

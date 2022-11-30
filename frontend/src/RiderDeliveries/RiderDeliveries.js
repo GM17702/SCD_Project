@@ -34,7 +34,7 @@ export default function OrderDetails() {
   useEffect(() => {
   (async () =>
     {
-      await fetch(`/riderAcceptedDeliveries/${emailprop}`).then(
+      await fetch(`http://localhost:3001/riderAcceptedDeliveries/${emailprop}`).then(
         response => response.json()
       ).then(
         deliverydata => setdeliveryInfo(deliverydata))
@@ -53,7 +53,7 @@ export default function OrderDetails() {
       
       (async () =>
         {
-          await fetch(`/orderitems/${orderingid}`).then(
+          await fetch(`http://localhost:3001/orderitems/${orderingid}`).then(
             response => response.json()
           ).then(
             deliveryitemdata => setdeliveryitemInfo(deliveryitemdata))
@@ -72,7 +72,7 @@ export default function OrderDetails() {
     {
         (async () =>
       {
-          await fetch(`/confirmRiderDelivery`,{
+          await fetch(`http://localhost:3001/confirmRiderDelivery`,{
 
             method: 'put',
             body: JSON.stringify({orderid}),

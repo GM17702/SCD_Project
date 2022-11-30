@@ -1,6 +1,6 @@
 FROM node:current-alpine
 
-WORKDIR /SCD_Frontend
+WORKDIR /app
 
 COPY package.json ./
 RUN npm install

@@ -65,7 +65,7 @@ export default function ProfilePage(props) {
         let address = addressValue;
 
 
-         await fetch(`/update/${cnicValue}`,{
+         await fetch(`http://localhost:3001/update/${cnicValue}`,{
 
           method: 'put',
           body: JSON.stringify({bio , name, email, mobilenumber, address}),
