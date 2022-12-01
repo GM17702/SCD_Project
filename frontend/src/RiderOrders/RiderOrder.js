@@ -76,7 +76,7 @@ export default function OrderDetails() {
 
         (async () =>
       {
-          await fetch(`/acceptRiderOrder/${orderid}`,{
+          await fetch(`http://13.233.58.41:3001/acceptRiderOrder/${orderid}`,{
 
             method: 'put',
             body: JSON.stringify({orderid,rideremail}),
@@ -90,7 +90,7 @@ export default function OrderDetails() {
           resolve => setTimeout(resolve, ms)
         );
         await delay(2000);
-        navigate(0);
+        navigate('/rider/RiderDeliveries',{state:{email : emailprop}});
      })();
     }
 

@@ -86,7 +86,7 @@ export default function OrderDetails() {
           resolve => setTimeout(resolve, ms)
         );
         await delay(2500);
-        navigate(0);
+        navigate('/rider/RiderHome',{state:{email : emailprop}});
      })();
     }
 
