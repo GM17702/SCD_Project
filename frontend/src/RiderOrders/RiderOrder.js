@@ -34,7 +34,7 @@ export default function OrderDetails() {
   useEffect(() => {
   (async () =>
     {
-      await fetch("http://localhost:3001/orders").then(
+      await fetch("http://13.233.58.41:3001/orders").then(
         response => response.json()
       ).then(
         orderdata => setOrderInfo(orderdata))
@@ -54,7 +54,7 @@ export default function OrderDetails() {
       
       (async () =>
         {
-          await fetch(`http://localhost:3001/orderitems/${orderingid}`).then(
+          await fetch(`http://13.233.58.41:3001/orderitems/${orderingid}`).then(
             response => response.json()
           ).then(
             itemdata => setOrderitemInfo(itemdata))

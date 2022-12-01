@@ -38,7 +38,7 @@ export default function RiderLogin({tokengetter})
         let email = emailValue;
         let password = passwordValue;
 
-          await fetch(`http://localhost:3001/RiderLoginAuthenticate`,{
+          await fetch(`http://13.233.58.41:3001/RiderLoginAuthenticate`,{
 
           method: 'post',
           body: JSON.stringify({email, password}),

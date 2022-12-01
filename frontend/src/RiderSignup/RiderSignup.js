@@ -92,7 +92,7 @@ export default function RiderSignup() {
         let cnic = cnicValue;
 
 
-          await fetch(`http://localhost:3001/newRiderSignup`,{
+          await fetch(`http://13.233.58.41:3001/newRiderSignup`,{
 
           method: 'post',
           body: JSON.stringify({bio , name, email, mobilenumber, address, password, cnic}),

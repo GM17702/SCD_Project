@@ -8,7 +8,7 @@ import RiderLogin from './RiderLogin/RiderLogin';
 import RiderHome from './RiderHome/RiderHome';
 import RiderDeliveries from './RiderDeliveries/RiderDeliveries';
 import Footer from './Footer/Footer';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -22,11 +22,12 @@ export default function RiderRoutes()
     
 }
 
-
   return (
     <BrowserRouter>
 
         <Routes>
+
+        <Route path='/' element={<Navigate to="/rider/RiderLogin" replace />} />
           
           <Route path='/rider/RiderLogin' element={<div><RiderLogin tokengetter={newToken} /></div>} />
 

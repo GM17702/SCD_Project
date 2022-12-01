@@ -8,6 +8,11 @@ services:
       - logs:/app/logs
       - ./backend:/app
       - /app/node_modules
+    networks:
+      - some_network
+
+
+      
   frontend:
     build: ./frontend
     ports:
@@ -18,6 +23,11 @@ services:
     tty: true
     depends_on:
       - backend
+    networks:
+      - some_network
+
+networks:
+  some_network:  
 
 volumes:
   data:
