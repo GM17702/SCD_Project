@@ -38,7 +38,7 @@ test('rider navbar profile navigation', async() =>
    );
    
    await expect(screen.getByRole("link", { name: "Profile" })).toBeInTheDocument();
-   await expect(screen.getByRole("link", { name: "Profile" })).toHaveAttribute('href',"/Profile");
+   await expect(screen.getByRole("link", { name: "Profile" })).toHaveAttribute('href',"/Customer_Profile");
 
 });
 
@@ -55,7 +55,7 @@ test('rider navbar orders navigation', async() =>
    );
    
    await expect(screen.getByRole("link", { name: "Cart 0" })).toBeInTheDocument();
-   await expect(screen.getByRole("link", { name: "Cart 0" })).toHaveAttribute('href',"/Cart");
+   await expect(screen.getByRole("link", { name: "Cart 0" })).toHaveAttribute('href',"/Customer_Cart");
 
 });
 

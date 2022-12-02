@@ -21,9 +21,9 @@ root.render(
    
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/Cart" element={<Cart />} />
-      <Route path="/Profile" element={<Profile />} />
-      <Route path="/EditProfile" element={<EditProfile />} />
+      <Route path="/Customer_Cart" element={<Cart />} />
+      <Route path="/Customer_Profile" element={<Profile />} />
+      <Route path="/Customer_EditProfile" element={<EditProfile />} />
       </Routes>
      <Footer/>
       </Provider>

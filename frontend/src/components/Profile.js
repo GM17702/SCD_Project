@@ -59,7 +59,7 @@ export default function Profile() {
                 <p className="text-muted mb-1">{customerinfo.cust.name}</p>
                 <p className="text-muted mb-4">{customerinfo.cust.address}</p>
                 <div className="d-flex justify-content-center mb-2">
-                <Link to="/EditProfile" className="edit" state={{ from: customerinfo }}>Edit </Link> 
+                <Link to="/Customer_EditProfile" className="edit" state={{ from: customerinfo }}>Edit </Link> 
                   <button className="edit1">Message</button>
                 </div>
               </MDBCardBody>
